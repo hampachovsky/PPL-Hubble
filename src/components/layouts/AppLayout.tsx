@@ -1,4 +1,5 @@
-import { Header, Sidebar } from "@/components/ui";
+import { Header } from "@/components";
+import { Sidebar } from "@/features/sidebar";
 import React from "react";
 import { Outlet } from "react-router";
 
