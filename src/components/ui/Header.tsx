@@ -1,10 +1,16 @@
+import { ROUTES } from "@/config/paths";
 import { BookmarkSquareIcon } from "@heroicons/react/24/outline";
 import { MagnifyingGlassCircleIcon } from "@heroicons/react/24/solid";
 import React from "react";
+import { useNavigate } from "react-router";
 export const Header: React.FC = () => {
+  const navigate = useNavigate();
   return (
     <header className="sticky top-0 z-50 col-span-12 h-16 border-b border-gray-700 bg-slate-800">
-      <div className="flex h-full items-center justify-between px-5">
+      <div
+        className="flex h-full items-center justify-between px-5 hover:cursor-pointer"
+        onClick={() => navigate(ROUTES.HOME)}
+      >
         <div className="flex items-center text-xl font-bold">
           <BookmarkSquareIcon className="mr-1 h-6 w-6" />
           PPL-Hubble

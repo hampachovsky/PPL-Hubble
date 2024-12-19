@@ -1,4 +1,4 @@
-import { ROUTES } from "@/features/navigation";
+import { ROUTES } from "@/config/paths";
 import React from "react";
 import { Link } from "react-router";
 
@@ -12,10 +12,10 @@ export const MenuItem: React.FC<MenuItemProps> = ({ text, Icon }) => {
       <div
         data-tooltip-id="menu-text"
         data-tooltip-content={text}
-        className="group relative flex items-center space-x-2 rounded-sm p-2 hover:bg-gray-600"
+        className="group relative flex items-center justify-center space-x-2 rounded-sm p-2 hover:bg-gray-600 sm:justify-start"
       >
-        <Icon className="h-5 w-5 flex-shrink-0" />
-        <h3 className="truncate">{text}</h3>
+        <Icon className="h-5 w-5 flex-shrink-0 text-cyan-600" />
+        <h3 className="hidden truncate sm:block">{text}</h3>
       </div>
     </Link>
   );

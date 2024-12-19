@@ -1,29 +1,12 @@
+import { PostCard } from "@/features/post";
 import React from "react";
 
 export const Home: React.FC = () => {
   return (
-    <div>
-      <div>
-        <h2 className="text-green-500">Home Page</h2>
-        <h2 className="text-green-500">Home Page</h2>
-        <h2 className="text-green-500">Home Page</h2>
-        <h2 className="text-green-500">Home Page</h2>
-        <h2 className="text-green-500">Home Page</h2>
-        <h2 className="text-green-500">Home Page</h2>
-        <h2 className="text-green-500">Home Page</h2>
-        <h2 className="text-green-500">Home Page</h2>
-        <h2 className="text-green-500">Home Page</h2>
-        <h2 className="text-green-500">Home Page</h2>
-        <h2 className="text-green-500">Home Page</h2>
-        <h2 className="text-green-500">Home Page</h2>
-        <h2 className="text-green-500">Home Page</h2>
-        <h2 className="text-green-500">Home Page</h2>
-        <h2 className="text-green-500">Home Page</h2>
-        <h2 className="text-green-500">Home Page</h2>
-        <h2 className="text-green-500">Home Page</h2>
-        <h2 className="text-green-500">Home Page</h2>
-        <h2 className="text-green-500">Home Page</h2>
-      </div>
+    <div className="container flex flex-col items-center gap-8">
+      <PostCard />
+      <PostCard />
+      <PostCard />
     </div>
   );
 };

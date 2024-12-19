@@ -1,4 +1,4 @@
-import { ROUTES } from "@/features/navigation";
+import { ROUTES } from "@/config/paths";
 import React from "react";
 import { Link } from "react-router";
 
