@@ -2,7 +2,7 @@ import { ROUTES } from "@/config/paths";
 import { BookmarkSquareIcon } from "@heroicons/react/24/outline";
 import { MagnifyingGlassCircleIcon } from "@heroicons/react/24/solid";
 import React from "react";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 export const Header: React.FC = () => {
   const navigate = useNavigate();
   return (
@@ -26,7 +26,8 @@ export const Header: React.FC = () => {
               <MagnifyingGlassCircleIcon className="h-8 w-8 text-gray-400 hover:text-white" />
             </button>
           </div>
-          <div>Login</div>
+          <div>
+            <Link to='/' className="hover:text-cyan-400">Login</Link></div>
         </div>
       </div>
     </header>
