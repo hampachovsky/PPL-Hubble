@@ -1,11 +1,11 @@
+import { Category } from "@/features/category";
 import { PostCard } from "@/features/post";
 import React from "react";
 
-export const Home: React.FC = () => {
+export const CategoryPage: React.FC = () => {
   return (
     <div className="container flex flex-col items-center gap-8">
-      <PostCard />
-      <PostCard />
+      <Category />
       <PostCard />
     </div>
   );

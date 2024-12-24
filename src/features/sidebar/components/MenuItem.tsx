@@ -1,14 +1,14 @@
-import { ROUTES } from "@/config/paths";
 import React from "react";
 import { Link } from "react-router";
 
 interface MenuItemProps {
   text: string;
   Icon: React.ElementType;
+  path: string;
 }
-export const MenuItem: React.FC<MenuItemProps> = ({ text, Icon }) => {
+export const MenuItem: React.FC<MenuItemProps> = ({ text, Icon, path }) => {
   return (
-    <Link to={ROUTES.HOME}>
+    <Link to={path}>
       <div
         data-tooltip-id="menu-text"
         data-tooltip-content={text}

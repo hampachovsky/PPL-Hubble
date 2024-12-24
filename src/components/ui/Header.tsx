@@ -1,4 +1,4 @@
-import { ROUTES } from "@/config/paths";
+import { paths } from "@/config/paths";
 import { BookmarkSquareIcon } from "@heroicons/react/24/outline";
 import { MagnifyingGlassCircleIcon } from "@heroicons/react/24/solid";
 import React from "react";
@@ -9,7 +9,7 @@ export const Header: React.FC = () => {
     <header className="sticky top-0 z-50 col-span-12 h-16 border-b border-gray-700 bg-slate-800">
       <div
         className="flex h-full items-center justify-between px-5 hover:cursor-pointer"
-        onClick={() => navigate(ROUTES.HOME)}
+        onClick={() => navigate(paths.home.path)}
       >
         <div className="flex items-center text-xl font-bold">
           <BookmarkSquareIcon className="mr-1 h-6 w-6" />
@@ -27,7 +27,10 @@ export const Header: React.FC = () => {
             </button>
           </div>
           <div>
-            <Link to='/' className="hover:text-cyan-400">Login</Link></div>
+            <Link to="/" className="hover:text-cyan-400">
+              Login
+            </Link>
+          </div>
         </div>
       </div>
     </header>

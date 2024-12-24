@@ -1,4 +1,4 @@
-import { ROUTES } from "@/config/paths";
+import { paths } from "@/config/paths";
 import { FireIcon, PlusCircleIcon } from "@heroicons/react/20/solid";
 import React from "react";
 import { Link } from "react-router";
@@ -15,7 +15,7 @@ export const PostCardHeader: React.FC = () => {
         <div className="flex items-center gap-2">
           <Link
             className="decoration-cyan-400 hover:text-cyan-400 hover:underline"
-            to={`${ROUTES.PROFILE}/:id`}
+            to={`${paths.profile.getHref("1")}`}
           >
             User1
           </Link>
