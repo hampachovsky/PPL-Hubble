@@ -1,11 +1,21 @@
+import clsx from "clsx";
 import React from "react";
 import { PostCardContent } from "./PostCardContent";
 import { PostCardFooter } from "./PostCardFooter";
 import { PostCardHeader } from "./PostCardHeader";
 
-export const PostCard: React.FC = () => {
+type PostCardProps = {
+  fullWidth?: boolean;
+};
+
+export const PostCard: React.FC<PostCardProps> = ({ fullWidth = false }) => {
   return (
-    <div className="w-3/4 rounded-lg border border-gray-600 bg-stone-700 shadow">
+    <div
+      className={clsx(
+        "rounded-md border border-gray-700 bg-stone-700 shadow",
+        fullWidth ? "w-full" : "sm:3/4 md:w-2/4"
+      )}
+    >
       <div className="p-4">
         <PostCardHeader />
         <PostCardContent />

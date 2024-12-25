@@ -6,12 +6,12 @@ import { Link, useNavigate } from "react-router";
 export const Header: React.FC = () => {
   const navigate = useNavigate();
   return (
-    <header className="sticky top-0 z-50 col-span-12 h-16 border-b border-gray-700 bg-slate-800">
-      <div
-        className="flex h-full items-center justify-between px-5 hover:cursor-pointer"
-        onClick={() => navigate(paths.home.path)}
-      >
-        <div className="flex items-center text-xl font-bold">
+    <header className="sticky top-0 z-50 col-span-12 h-16 border-b border-gray-800 bg-gray-800">
+      <div className="flex h-full items-center justify-between px-5">
+        <div
+          className="flex items-center text-xl font-bold hover:cursor-pointer"
+          onClick={() => navigate(paths.home.path)}
+        >
           <BookmarkSquareIcon className="mr-1 h-6 w-6" />
           PPL-Hubble
         </div>
