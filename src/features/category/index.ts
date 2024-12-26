@@ -1,1 +1,1 @@
-export { Category } from "./components";
+export { Category, Rules, RulesBlock } from "./components";

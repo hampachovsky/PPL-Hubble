@@ -1,1 +1,1 @@
-export { router } from "../post/router";
+export { router } from "./router";

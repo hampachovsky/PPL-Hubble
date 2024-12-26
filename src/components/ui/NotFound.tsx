@@ -4,7 +4,7 @@ import { Link } from "react-router";
 
 export const NotFound: React.FC = () => {
   return (
-    <section className="h-screen bg-gray-900">
+    <section className="h-screen bg-stone-900">
       <div className="mx-auto max-w-screen-xl px-4 py-8 lg:px-6 lg:py-16">
         <div className="mx-auto max-w-screen-sm text-center">
           <h1 className="mb-4 text-7xl font-extrabold tracking-tight text-slate-400 lg:text-9xl">
