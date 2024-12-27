@@ -1,2 +1,2 @@
 export { Category } from "./Category";
-export { Rules, RulesBlock } from "./Rules";
+export { RulesBlock } from "./Rules";

@@ -1,4 +1,5 @@
 import { paths } from "@/config/paths";
+import { AuthModal, authPaths } from "@/features/auth";
 import { BookmarkSquareIcon } from "@heroicons/react/24/outline";
 import { MagnifyingGlassCircleIcon } from "@heroicons/react/24/solid";
 import React from "react";
@@ -27,12 +28,16 @@ export const Header: React.FC = () => {
             </button>
           </div>
           <div>
-            <Link to="/" className="hover:text-cyan-400">
+            <Link
+              to={`?modal=${authPaths.login}`}
+              className="hover:text-cyan-400"
+            >
               Login
             </Link>
           </div>
         </div>
       </div>
+      <AuthModal />
     </header>
   );
 };

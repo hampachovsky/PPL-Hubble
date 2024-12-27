@@ -1,4 +1,4 @@
-import { Category, Rules, RulesBlock } from "@/features/category";
+import { Category, RulesBlock } from "@/features/category";
 import { PostCard } from "@/features/post";
 import { Tabs } from "@/features/tabs";
 import React from "react";
@@ -21,7 +21,7 @@ export const CategoryPage: React.FC = () => {
               <RulesBlock />
             </div>
           </div>,
-          <Rules />,
+          <RulesBlock />,
         ]}
       />
     </div>
