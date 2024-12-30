@@ -1,2 +1,2 @@
-export { AuthModal } from "./components";
+export { AuthModal, LoginForm, RegisterForm } from "./components";
 export { authPaths } from "./constants";
