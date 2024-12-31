@@ -1,4 +1,4 @@
-import { paths } from "@/config/paths";
+import { paths } from "@/config";
 import { MenuItem } from "@/features/sidebar";
 import {
   BookmarkIcon,
@@ -15,15 +15,19 @@ export const Sidebar: React.FC = () => {
       <aside className="sticky top-16 col-span-2 row-span-2 h-[calc(100vh-4rem)] overflow-y-auto bg-transparent p-2">
         <div className="flex flex-col gap-2">
           <div className="flex flex-col gap-2">
-            <MenuItem path={paths.home.path} text="Popular" Icon={FireIcon} />
-            <MenuItem path={paths.home.path} text="New" Icon={ClockIcon} />
             <MenuItem
-              path={paths.home.path}
+              path={paths.popular.path}
+              text="Popular"
+              Icon={FireIcon}
+            />
+            <MenuItem path={paths.new.path} text="New" Icon={ClockIcon} />
+            <MenuItem
+              path={paths.bookmarked.path}
               text="Bookmarked"
               Icon={BookmarkIcon}
             />
             <MenuItem
-              path={paths.home.path}
+              path={paths.subscriptions.path}
               text="Subscription"
               Icon={ListBulletIcon}
             />

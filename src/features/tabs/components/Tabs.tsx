@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 interface TabsProps {
-  tabs: string[];
+  tabs: readonly string[];
   contents: React.ReactNode[];
   tabHeader: React.ReactNode;
 }

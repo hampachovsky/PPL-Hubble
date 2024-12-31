@@ -1,4 +1,4 @@
-import { paths } from "@/config/paths";
+import { paths } from "@/config";
 import React from "react";
 import { Link } from "react-router";
 

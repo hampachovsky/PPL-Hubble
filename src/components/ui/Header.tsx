@@ -1,4 +1,4 @@
-import { paths } from "@/config/paths";
+import { paths } from "@/config";
 import { AuthModal, authPaths } from "@/features/auth";
 import { BookmarkSquareIcon } from "@heroicons/react/24/outline";
 import { MagnifyingGlassCircleIcon } from "@heroicons/react/24/solid";
@@ -11,7 +11,7 @@ export const Header: React.FC = () => {
       <div className="flex h-full items-center justify-between px-5">
         <div
           className="flex items-center text-xl font-bold hover:cursor-pointer"
-          onClick={() => navigate(paths.home.path)}
+          onClick={() => navigate(paths.popular.path)}
         >
           <BookmarkSquareIcon className="mr-1 h-6 w-6" />
           PPL-Hubble

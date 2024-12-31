@@ -1,0 +1,1 @@
+export { UserFeedPage } from "./UserFeedPage";
