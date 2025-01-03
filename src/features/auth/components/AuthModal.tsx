@@ -1,8 +1,7 @@
-import { useEmailAuth } from "@/features/auth";
+import { useAuthModal, useEmailAuth } from "@/features/auth";
 import { ArrowLeftIcon, XMarkIcon } from "@heroicons/react/20/solid";
 import React, { useEffect, useState } from "react";
 import Modal from "react-modal";
-import { useSearchParams } from "react-router";
 import { authPaths } from "../constants";
 import { LoginForm } from "./LoginForm";
 import { RegisterForm } from "./RegisterForm";
@@ -15,28 +14,25 @@ const modalComponents: { [key: string]: React.FC } = {
 };
 
 export const AuthModal: React.FC = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const modal = searchParams.get("modal");
-  const [modalIsOpen, setModalIsOpen] = useState(!!modal);
+  const { currentModal, closeAuthModal } = useAuthModal();
   const { emailAuth, handleBack } = useEmailAuth();
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const isAuthModal =
+    currentModal &&
+    (Object.values(authPaths) as string[]).includes(currentModal);
 
   useEffect(() => {
-    setModalIsOpen(!!modal);
-  }, [modal]);
+    setModalIsOpen(!!isAuthModal);
+  }, [isAuthModal]);
 
-  const closeModal = () => {
-    const params = new URLSearchParams(searchParams.toString());
-    params.delete("modal");
-    params.delete("authOption");
-    setSearchParams(params);
-  };
+  const ModalContent = isAuthModal ? modalComponents[currentModal] : null;
 
-  const ModalContent = modal ? modalComponents[modal] : null;
   return (
     <div>
       <Modal
         isOpen={modalIsOpen}
-        onRequestClose={closeModal}
+        onRequestClose={closeAuthModal}
         contentLabel="Authentication"
         overlayClassName="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center"
         className="relative w-full max-w-md rounded-lg bg-stone-800 p-6 text-white shadow-lg"
@@ -52,7 +48,7 @@ export const AuthModal: React.FC = () => {
         )}
         {ModalContent ? <ModalContent /> : "No content available"}
         <button
-          onClick={closeModal}
+          onClick={closeAuthModal}
           className="absolute right-2 top-2 text-gray-500 hover:text-gray-100"
           aria-label="Close"
         >

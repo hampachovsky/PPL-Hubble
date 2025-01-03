@@ -1,3 +1,4 @@
+import { UserAvatar } from "@/components";
 import { paths } from "@/config";
 import { FireIcon, PlusCircleIcon } from "@heroicons/react/20/solid";
 import React from "react";
@@ -12,7 +13,8 @@ export const PostCardHeader: React.FC = () => {
           <FireIcon className="h-5 w-5 flex-shrink-0" />
           <h5 className="text-sm sm:text-base">Category 1</h5>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex flex-row items-center gap-2">
+          <UserAvatar userId="1" avatarURL="https://placebear.com/600/600" />
           <Link
             className="decoration-cyan-400 hover:text-cyan-400 hover:underline"
             to={`${paths.profile.getHref("1")}`}

@@ -17,7 +17,7 @@ export const NotFound: React.FC = () => {
             Sorry, we can't find that page.
           </p>
           <Link
-            to={paths.home.path}
+            to={paths.popular.path}
             className="bg-primary-600 hover:bg-primary-800 focus:ring-primary-300 focus:ring-primary-900 my-4 inline-flex rounded-lg px-5 py-2.5 text-center text-sm font-medium text-white focus:outline-none focus:ring-4"
           >
             Back to Homepage
