@@ -14,7 +14,11 @@ export const PostCardHeader: React.FC = () => {
           <h5 className="text-sm sm:text-base">Category 1</h5>
         </div>
         <div className="flex flex-row items-center gap-2">
-          <UserAvatar userId="1" avatarURL="https://placebear.com/600/600" />
+          <UserAvatar
+            userId="1"
+            avatarURL="https://placebear.com/600/600"
+            size={9}
+          />
           <Link
             className="decoration-cyan-400 hover:text-cyan-400 hover:underline"
             to={`${paths.profile.getHref("1")}`}

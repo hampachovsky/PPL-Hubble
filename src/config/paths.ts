@@ -23,4 +23,8 @@ export const paths = {
     path: "/category/:category",
     getHref: (category: string) => `/category/${category}`,
   },
+  settings: {
+    path: "/settings",
+    getHref: () => "/settings",
+  },
 } as const;

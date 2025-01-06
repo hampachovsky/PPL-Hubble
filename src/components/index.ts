@@ -1,2 +1,2 @@
 export { AppLayout } from "./layouts";
-export { Header, NotFound, UserAvatar } from "./ui";
+export { Banner, Header, NotFound, UserAvatar } from "./ui";

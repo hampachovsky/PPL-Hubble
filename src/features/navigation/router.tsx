@@ -1,7 +1,9 @@
 import { AppLayout, NotFound } from "@/components";
 import { paths } from "@/config";
+import { ProtectedRoute } from "@/features/navigation";
 import { PostsList } from "@/features/post";
 import { ProfilePage } from "@/pages/ProfilePage";
+import { SettingsPage } from "@/pages/SettingsPage";
 import { SingleCategoryPage } from "@/pages/SingleCategoryPage";
 import { UserFeedPage } from "@/pages/UserFeedPage";
 import { createBrowserRouter } from "react-router";
@@ -31,6 +33,14 @@ export const router = createBrowserRouter([
       },
       { path: paths.profile.path, element: <ProfilePage /> },
       { path: paths.category.path, element: <SingleCategoryPage /> },
+      {
+        path: paths.settings.path,
+        element: (
+          <ProtectedRoute>
+            <SettingsPage />
+          </ProtectedRoute>
+        ),
+      },
     ],
   },
   { element: <NotFound />, path: "*" },
