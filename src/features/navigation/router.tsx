@@ -2,6 +2,7 @@ import { AppLayout, NotFound } from "@/components";
 import { paths } from "@/config";
 import { ProtectedRoute } from "@/features/navigation";
 import { PostsList } from "@/features/post";
+import { PostEditorPage } from "@/pages/PostEditorPage";
 import { ProfilePage } from "@/pages/ProfilePage";
 import { SettingsPage } from "@/pages/SettingsPage";
 import { SingleCategoryPage } from "@/pages/SingleCategoryPage";
@@ -38,6 +39,14 @@ export const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <SettingsPage />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: paths.postEditor.path,
+        element: (
+          <ProtectedRoute>
+            <PostEditorPage />
           </ProtectedRoute>
         ),
       },

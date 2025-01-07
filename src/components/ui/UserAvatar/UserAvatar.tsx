@@ -1,30 +1,29 @@
-import { paths } from "@/config";
 import { UserCircleIcon } from "@heroicons/react/20/solid";
+import clsx from "clsx";
 import React from "react";
-import { Link } from "react-router";
 
 interface UserAvatarProps {
   avatarURL?: string;
-  userId: string;
-  size: number;
+  userId?: string;
+  size?: "sm" | "lg";
 }
 
 export const UserAvatar: React.FC<UserAvatarProps> = ({
   avatarURL,
-  userId,
-  size = 9,
+  size = "sm",
 }) => {
+  const sizeClass = size === "sm" ? "size-9" : "size-16";
   return (
-    <Link to={paths.profile.getHref(userId)}>
+    <>
       {avatarURL ? (
         <img
-          className={`size-${size} rounded-full`}
+          className={clsx(`rounded-full`, sizeClass)}
           src={avatarURL}
           alt="User Avatar"
         />
       ) : (
-        <UserCircleIcon className={`size-${size} rounded-full`} />
+        <UserCircleIcon className={clsx(`rounded-full`, sizeClass)} />
       )}
-    </Link>
+    </>
   );
 };

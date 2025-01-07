@@ -1,16 +1,16 @@
+import { UserAvatar } from "@/components";
 import { paths } from "@/config";
 import { AuthModal, useAuthModal } from "@/features/auth";
-import { Cog6ToothIcon } from "@heroicons/react/20/solid";
+import { PencilSquareIcon } from "@heroicons/react/20/solid";
 import { BookmarkSquareIcon } from "@heroicons/react/24/outline";
 import { MagnifyingGlassCircleIcon } from "@heroicons/react/24/solid";
 import clsx from "clsx";
 import React from "react";
-import { useNavigate } from "react-router";
-import { UserAvatar } from "../UserAvatar";
+import { Link, useNavigate } from "react-router";
 export const Header: React.FC = () => {
   const { currentModal, openAuthModal } = useAuthModal();
   const navigate = useNavigate();
-  const isAuth = true;
+  const isAuth = false;
   return (
     <>
       <header
@@ -32,22 +32,28 @@ export const Header: React.FC = () => {
               <input
                 type="text"
                 placeholder="Search..."
-                className="h-1/2 rounded-xl bg-slate-500 p-2 text-white placeholder-slate-300 outline-none"
+                className="h-1/2 rounded-xl bg-zinc-700 p-2 text-white placeholder-slate-300 outline-none"
               />
               <button className="absolute inset-y-0 end-0 flex items-center pe-3">
                 <MagnifyingGlassCircleIcon className="h-6 w-6 text-gray-400 hover:text-cyan-400" />
               </button>
             </div>
+
             <div className="flex items-center space-x-4">
               {isAuth ? (
                 <div className="flex space-x-2">
-                  <UserAvatar userId="1" size={7} />
-                  <button
-                    onClick={() => navigate(paths.settings.path)}
-                    className="flex items-center hover:text-cyan-400"
-                  >
-                    <Cog6ToothIcon className="size-6" />
-                  </button>
+                  <div>
+                    <button
+                      onClick={() => navigate(paths.postEditor.getHref("new"))}
+                      className="inline-flex items-center rounded-md bg-zinc-700 px-4 py-2 font-bold hover:bg-gray-400"
+                    >
+                      <PencilSquareIcon className="size-6" />
+                      <span className="hidden md:block">Post</span>
+                    </button>
+                  </div>
+                  <Link to={paths.profile.getHref("1")}>
+                    <UserAvatar />
+                  </Link>
                 </div>
               ) : (
                 <button

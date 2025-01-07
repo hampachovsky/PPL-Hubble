@@ -1,6 +1,8 @@
 import { UserAvatar } from "@/components";
+import { paths } from "@/config";
 import { UserMinusIcon } from "@heroicons/react/20/solid";
 import React from "react";
+import { Link } from "react-router";
 
 export const SubscriptionBlock: React.FC = () => {
   return (
@@ -8,33 +10,48 @@ export const SubscriptionBlock: React.FC = () => {
       <h3 className="mb-4 text-lg font-semibold">Subscription</h3>
       <ul className="space-y-2 text-pretty text-justify">
         <li className="flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <UserAvatar userId="1" />
-            <h4 className="hover:cursor-pointer hover:text-cyan-400">
-              Nickname
-            </h4>
+          <div>
+            <Link
+              className="flex items-center space-x-2"
+              to={paths.profile.getHref("1")}
+            >
+              <UserAvatar />
+              <h4 className="hover:cursor-pointer hover:text-cyan-400">
+                Nickname
+              </h4>
+            </Link>
           </div>
           <button>
             <UserMinusIcon className="size-6 text-red-600" />
           </button>
         </li>
         <li className="flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <UserAvatar userId="1" />
-            <h4 className="hover:cursor-pointer hover:text-cyan-400">
-              Nickname
-            </h4>
+          <div>
+            <Link
+              className="flex items-center space-x-2"
+              to={paths.profile.getHref("1")}
+            >
+              <UserAvatar />
+              <h4 className="hover:cursor-pointer hover:text-cyan-400">
+                Nickname
+              </h4>
+            </Link>
           </div>
           <button>
             <UserMinusIcon className="size-6 text-red-600" />
           </button>
         </li>
         <li className="flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <UserAvatar userId="1" />
-            <h4 className="hover:cursor-pointer hover:text-cyan-400">
-              Nickname
-            </h4>
+          <div>
+            <Link
+              className="flex items-center space-x-2"
+              to={paths.profile.getHref("1")}
+            >
+              <UserAvatar />
+              <h4 className="hover:cursor-pointer hover:text-cyan-400">
+                Nickname
+              </h4>
+            </Link>
           </div>
           <button>
             <UserMinusIcon className="size-6 text-red-600" />

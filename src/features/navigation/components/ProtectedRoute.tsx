@@ -7,7 +7,6 @@ export const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const { openAuthModal } = useAuthModal();
-
   const isAuth = true;
   const navigate = useNavigate();
 
