@@ -1,0 +1,93 @@
+/* Selection styles */
+.cdx-block::selection,
+.cdx-block *::selection,
+.ce-header::selection,
+.ce-block__content::selection {
+  @apply bg-stone-800;
+}
+
+
+/* Block styles */
+.ce-block--selected .ce-block__content {
+  @apply bg-stone-600 rounded-md;
+}
+
+.ce-block__content {
+  @apply prose;
+}
+
+/* Popover styles */
+.ce-popover__container {
+  @apply bg-stone-800;
+}
+
+.ce-popover--opened > .ce-popover__container {
+  @apply border-stone-500 text-neutral-200;
+}
+
+.ce-popover-item__title {
+  @apply text-neutral-200;
+}
+
+.ce-popover:hover {
+  --color-background-item-hover: #57534e;
+}
+
+.ce-popover-item-separator__line {
+  @apply bg-stone-600;
+}
+
+.ce-popover__container svg {
+  @apply text-cyan-400;
+}
+
+
+
+/* Search field styles */
+.cdx-search-field {
+  @apply bg-stone-600;
+}
+
+.cdx-search-field__input::placeholder {
+  @apply text-neutral-400;
+}
+
+/* Inline tool input styles */
+.ce-inline-tool-input {
+  @apply bg-stone-600 text-neutral-200 rounded-md outline-none;
+}
+
+.ce-inline-tool-input::placeholder {
+  @apply text-neutral-400;
+}
+
+/* Text styles */
+.ce-paragraph,
+.ce-header {
+  @apply text-neutral-200;
+}
+
+.cdx-block a {
+  @apply text-cyan-200
+}
+
+/* Toolbar styles */
+.ce-toolbar__actions svg {
+  @apply text-cyan-400; 
+}
+
+.ce-toolbar__plus:hover, .ce-toolbar__settings-btn:hover {
+  @apply bg-stone-600 border-stone-700 
+}
+
+@media (max-width: 650px) {
+  .ce-toolbar__plus, .ce-toolbar__settings-btn {
+    @apply bg-stone-600 border-stone-700 
+  }
+
+}
+
+/* Override specific styles */
+.ce-block__content::selection {
+  background-color: black !important;
+}

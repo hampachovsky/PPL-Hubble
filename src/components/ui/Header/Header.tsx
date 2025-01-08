@@ -10,7 +10,7 @@ import { Link, useNavigate } from "react-router";
 export const Header: React.FC = () => {
   const { currentModal, openAuthModal } = useAuthModal();
   const navigate = useNavigate();
-  const isAuth = false;
+  const isAuth = true;
   return (
     <>
       <header

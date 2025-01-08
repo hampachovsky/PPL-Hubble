@@ -21,7 +21,7 @@ export const FormInput: React.FC<FormInputProps> = ({
   isTextarea = false,
 }) => {
   const inputClass = clsx(
-    "rounded-md bg-stone-600 p-3 text-slate-200 placeholder-slate-400 focus:outline-none focus:ring focus:border-cyan-500 b",
+    "rounded-md bg-stone-600 p-3 text-slate-200 placeholder-slate-400 focus:outline-none focus:ring focus:border-cyan-500",
     width === "full" ? "w-full" : "w-2/4"
   );
 
