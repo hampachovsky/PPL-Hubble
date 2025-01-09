@@ -31,4 +31,8 @@ export const paths = {
     path: "/post-editor/:new",
     getHref: (post: string) => `/post-editor/${post}`,
   },
+  post: {
+    path: "/post/:id",
+    getHref: (id: string) => `/post/${id}`,
+  },
 } as const;

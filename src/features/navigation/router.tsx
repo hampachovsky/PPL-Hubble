@@ -3,6 +3,7 @@ import { paths } from "@/config";
 import { ProtectedRoute } from "@/features/navigation";
 import { PostsList } from "@/features/post";
 import { PostEditorPage } from "@/pages/PostEditorPage";
+import { PostPage } from "@/pages/PostPage";
 import { ProfilePage } from "@/pages/ProfilePage";
 import { SettingsPage } from "@/pages/SettingsPage";
 import { SingleCategoryPage } from "@/pages/SingleCategoryPage";
@@ -33,6 +34,7 @@ export const router = createBrowserRouter([
         ],
       },
       { path: paths.profile.path, element: <ProfilePage /> },
+      { path: paths.post.path, element: <PostPage /> },
       { path: paths.category.path, element: <SingleCategoryPage /> },
       {
         path: paths.settings.path,

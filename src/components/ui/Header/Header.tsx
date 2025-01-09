@@ -1,7 +1,6 @@
-import { UserAvatar } from "@/components";
+import { PostButton, UserAvatar } from "@/components";
 import { paths } from "@/config";
 import { AuthModal, useAuthModal } from "@/features/auth";
-import { PencilSquareIcon } from "@heroicons/react/20/solid";
 import { BookmarkSquareIcon } from "@heroicons/react/24/outline";
 import { MagnifyingGlassCircleIcon } from "@heroicons/react/24/solid";
 import clsx from "clsx";
@@ -32,7 +31,7 @@ export const Header: React.FC = () => {
               <input
                 type="text"
                 placeholder="Search..."
-                className="h-1/2 rounded-xl bg-zinc-700 p-2 text-white placeholder-slate-300 outline-none"
+                className="h-1/2 rounded-xl bg-cyan-800 p-2 text-white placeholder-slate-300 outline-none"
               />
               <button className="absolute inset-y-0 end-0 flex items-center pe-3">
                 <MagnifyingGlassCircleIcon className="h-6 w-6 text-gray-400 hover:text-cyan-400" />
@@ -43,13 +42,9 @@ export const Header: React.FC = () => {
               {isAuth ? (
                 <div className="flex space-x-2">
                   <div>
-                    <button
+                    <PostButton
                       onClick={() => navigate(paths.postEditor.getHref("new"))}
-                      className="inline-flex items-center rounded-md bg-zinc-700 px-4 py-2 font-bold hover:bg-gray-400"
-                    >
-                      <PencilSquareIcon className="size-6" />
-                      <span className="hidden md:block">Post</span>
-                    </button>
+                    />
                   </div>
                   <Link to={paths.profile.getHref("1")}>
                     <UserAvatar />

@@ -1,0 +1,55 @@
+/* Lists */
+#post-content-root ul {
+  @apply list-disc;
+}
+
+#post-content-root ol {
+  @apply list-decimal;
+}
+
+/* Lists markers */
+#post-content-root
+  ol
+  :where(ol > li):not(
+    :where([class~="not-prose"], [class~="not-prose"] *)
+  )::marker {
+  @apply text-neutral-200;
+}
+
+/* Heading */
+#post-content-root h1 {
+  @apply text-center text-4xl font-bold text-neutral-50;
+}
+
+#post-content-root h2 {
+  @apply text-center text-3xl;
+}
+
+#post-content-root h3 {
+  @apply text-2xl;
+}
+
+#post-content-root h4 {
+  @apply text-xl;
+}
+
+#post-content-root h5 {
+  @apply text-lg font-normal;
+}
+
+#post-content-root h6 {
+  @apply text-lg font-thin;
+}
+
+/* Table */
+.post-table {
+  @apply mx-auto mt-4 table-auto border-collapse border border-gray-300 text-center;
+}
+
+.post-table th {
+  @apply border border-gray-500 bg-gray-800 px-4 py-2;
+}
+
+.post-table td {
+  @apply border border-gray-500 px-4 py-2;
+}

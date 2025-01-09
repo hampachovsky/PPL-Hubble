@@ -5,5 +5,6 @@ export {
   Header,
   LabeledInput,
   NotFound,
+  PostButton,
   UserAvatar,
 } from "./ui";

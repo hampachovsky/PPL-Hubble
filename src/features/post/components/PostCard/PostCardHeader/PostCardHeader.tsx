@@ -1,13 +1,25 @@
 import { UserAvatar } from "@/components";
 import { paths } from "@/config";
 import { FireIcon, PlusCircleIcon } from "@heroicons/react/20/solid";
+import clsx from "clsx";
 import React from "react";
 import { Link } from "react-router";
 import { Tooltip } from "react-tooltip";
 
-export const PostCardHeader: React.FC = () => {
+interface PostCardHeaderProps {
+  marginBottom?: "none" | "default";
+}
+
+export const PostCardHeader: React.FC<PostCardHeaderProps> = ({
+  marginBottom = "default",
+}) => {
   return (
-    <div className="mb-4 flex flex-nowrap items-center justify-between">
+    <div
+      className={clsx(
+        "flex flex-nowrap items-center justify-between",
+        marginBottom === "default" ? "mb-4" : ""
+      )}
+    >
       <div className="flex flex-wrap items-center gap-2 sm:gap-4">
         <div className="flex items-center gap-2 text-cyan-400">
           <FireIcon className="h-5 w-5 flex-shrink-0" />

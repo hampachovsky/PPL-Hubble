@@ -1,0 +1,1 @@
+export { PostCardFooter } from "./PostCardFooter";

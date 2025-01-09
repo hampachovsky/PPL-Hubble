@@ -6,10 +6,9 @@
   @apply bg-stone-800;
 }
 
-
 /* Block styles */
 .ce-block--selected .ce-block__content {
-  @apply bg-stone-600 rounded-md;
+  @apply rounded-md bg-stone-600;
 }
 
 .ce-block__content {
@@ -41,8 +40,6 @@
   @apply text-cyan-400;
 }
 
-
-
 /* Search field styles */
 .cdx-search-field {
   @apply bg-stone-600;
@@ -53,9 +50,14 @@
 }
 
 /* Inline tool input styles */
-.ce-inline-tool-input {
-  @apply bg-stone-600 text-neutral-200 rounded-md outline-none;
+.ce-inline-tool-input  {
+  @apply rounded-md bg-stone-600 text-neutral-200 outline-none;
 }
+
+.cdx-list-start-with-field, .cdx-list-start-with-field__input {
+  @apply rounded-md bg-stone-600 text-neutral-200 outline-none !important;
+}
+
 
 .ce-inline-tool-input::placeholder {
   @apply text-neutral-400;
@@ -68,23 +70,40 @@
 }
 
 .cdx-block a {
-  @apply text-cyan-200
+  @apply text-cyan-200;
+}
+
+.cdx-quote {
+  @apply border-stone-500;
+}
+
+.ce-block__content * {
+  @apply text-neutral-200;
+}
+
+.ce-block__content textarea {
+  @apply border-stone-700 bg-stone-600 text-neutral-200 outline-none;
 }
 
 /* Toolbar styles */
 .ce-toolbar__actions svg {
-  @apply text-cyan-400; 
+  @apply text-cyan-400;
 }
 
-.ce-toolbar__plus:hover, .ce-toolbar__settings-btn:hover {
-  @apply bg-stone-600 border-stone-700 
+.ce-popover-item-html {
+  @apply text-cyan-400;
+}
+
+.ce-toolbar__plus:hover,
+.ce-toolbar__settings-btn:hover {
+  @apply border-stone-700 bg-stone-600;
 }
 
 @media (max-width: 650px) {
-  .ce-toolbar__plus, .ce-toolbar__settings-btn {
-    @apply bg-stone-600 border-stone-700 
+  .ce-toolbar__plus,
+  .ce-toolbar__settings-btn {
+    @apply border-stone-700 bg-stone-600;
   }
-
 }
 
 /* Override specific styles */

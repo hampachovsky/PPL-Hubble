@@ -1,1 +1,7 @@
-export { PostCard, PostsList } from "./components";
+export {
+  Post,
+  PostCard,
+  PostCardFooter,
+  PostCardHeader,
+  PostsList,
+} from "./components";
