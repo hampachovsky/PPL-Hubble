@@ -34,8 +34,8 @@ export const AuthModal: React.FC = () => {
         isOpen={modalIsOpen}
         onRequestClose={closeAuthModal}
         contentLabel="Authentication"
-        overlayClassName="fixed inset-0 bg-black bg-opacity-60 z-60 flex justify-center items-center pointer-events-auto"
-        className="relative w-full max-w-md rounded-lg bg-stone-800 p-6 text-white shadow-lg"
+        overlayClassName="fixed inset-0  bg-black bg-opacity-60 z-60 flex justify-center items-center pointer-events-auto"
+        className="relative w-full max-w-md rounded-lg bg-stone-800 p-6 text-white shadow-lg outline-none"
       >
         {emailAuth && (
           <button

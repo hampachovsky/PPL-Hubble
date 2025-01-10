@@ -141,22 +141,22 @@ const mockPost = {
       },
     },
     {
-      type: "image",
-      data: {
-        caption: "",
-        url: "https://www.tesla.com/tesla_theme/assets/img/_vehicle_redesign/roadster_and_semi/roadster/hero.jpg",
-      },
-    },
-    {
       type: "table",
       data: {
         withHeadings: true,
         stretched: false,
         content: [
-          ["Kine", "Pigs", "Chicken"],
-          ["1 pcs", "3 pcs", "12 pcs"],
-          ["100$", "200$", "150$"],
+          ["Kine", "Pigs", "Chicken", "Meme", "smth"],
+          ["1 pcs", "3 pcs", "12 pcs", "1pcs  ", "33pcs"],
+          ["100$", "200$", "150$", "100$", "200$"],
         ],
+      },
+    },
+    {
+      type: "image",
+      data: {
+        caption: "",
+        url: "https://www.tesla.com/tesla_theme/assets/img/_vehicle_redesign/roadster_and_semi/roadster/hero.jpg",
       },
     },
   ],
