@@ -1,3 +1,4 @@
+export { useLogin, useLogout, useUser } from "./api";
 export { AuthModal, AuthOptions } from "./components";
 export { authPaths } from "./constants";
 export type { LoginDto, RegisterDto } from "./dto";

@@ -5,8 +5,8 @@ import {
   LoginDto,
   loginSchema,
   useEmailAuth,
+  useLogin,
 } from "@/features/auth";
-import supabase from "@/lib/supabase";
 import { yupResolver } from "@hookform/resolvers/yup";
 import React from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
@@ -14,39 +14,31 @@ import { Link } from "react-router";
 
 export const LoginForm: React.FC = () => {
   const { emailAuth, handleEmailAuth } = useEmailAuth();
+  const { login, isPending } = useLogin();
 
   const {
     control,
     handleSubmit,
+    reset,
     formState: { errors, isValid },
   } = useForm<LoginDto>({
-    defaultValues: {
+    /*    defaultValues: {
       email: "user@example.com",
-      password: "admin1234",
-    },
+      password: "userPassword",
+    }, */
     resolver: yupResolver(loginSchema),
     mode: "onBlur",
     reValidateMode: "onSubmit",
   });
 
-  const onSubmit: SubmitHandler<LoginDto> = async (test) => {
-    const { data, error } = await supabase.auth.signUp({
-      email: "userFoTestDeleted@example.com",
-      password: "userPassword",
-      options: {
-        data: {
-          username: "userFoTestDeleted",
-        },
+  const onSubmit: SubmitHandler<LoginDto> = async (dto) => {
+    login(dto, {
+      onSettled: () => {
+        reset();
       },
     });
 
-    if (error) {
-      console.error("Error registering user:", error.message);
-    } else {
-      console.log("User registered successfully:", data);
-    }
-
-    console.log("Form Data:", test);
+    console.log("Form Data:", dto);
   };
 
   return (
@@ -81,7 +73,7 @@ export const LoginForm: React.FC = () => {
                 />
               )}
             />
-            <SubmitButton text="Submit" disabled={!isValid} />
+            <SubmitButton text="Submit" disabled={!isValid || isPending} />
           </form>
         ) : (
           <AuthOptions handleEmailAuth={handleEmailAuth} text="Sign in" />

@@ -7,6 +7,7 @@ export {
   LabeledInput,
   NotFound,
   PostButton,
+  Spinner,
   SubmitButton,
   UserAvatar,
 } from "./ui";

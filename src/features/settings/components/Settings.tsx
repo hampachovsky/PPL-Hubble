@@ -1,10 +1,12 @@
 import { LabeledInput, SubmitButton } from "@/components";
+import { useLogout } from "@/features/auth";
 import { yupResolver } from "@hookform/resolvers/yup";
 import React from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { settingsSchema } from "../schemas";
 
 export const Settings: React.FC = () => {
+  const { logout, isPending } = useLogout();
   const methods = useForm({
     defaultValues: {
       username: "",
@@ -69,20 +71,35 @@ export const Settings: React.FC = () => {
               name="confirmPassword"
             />
           </div>
-          <div className="flex justify-end pt-2">
-            <button
-              onClick={() => methods.reset()}
-              className="mr-2 rounded-md bg-gray-700 px-4 py-2 text-white hover:bg-gray-600"
-            >
-              Cancel
-            </button>
-            <SubmitButton
-              disabled={
-                !methods.formState.isDirty || !methods.formState.isValid
-              }
-              text="Save"
-              width="unset"
-            />
+          <div className="mt-2 flex justify-between">
+            <div className="">
+              <button
+                onClick={() => {
+                  methods.reset();
+                  logout();
+                }}
+                className="mr-2 rounded-md bg-red-800 px-4 py-2 text-white hover:bg-red-400"
+              >
+                Logout
+              </button>
+            </div>
+            <div className="flex justify-end">
+              <button
+                onClick={() => methods.reset()}
+                className="mr-2 rounded-md bg-gray-700 px-4 py-2 text-white hover:bg-gray-600"
+              >
+                Cancel
+              </button>
+              <SubmitButton
+                disabled={
+                  !methods.formState.isDirty ||
+                  !methods.formState.isValid ||
+                  isPending
+                }
+                text="Save"
+                width="unset"
+              />
+            </div>
           </div>
         </form>
       </FormProvider>

@@ -1,5 +1,6 @@
+import { Spinner } from "@/components";
 import { paths } from "@/config";
-import { useAuthModal } from "@/features/auth";
+import { useAuthModal, useUser } from "@/features/auth";
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router";
 
@@ -7,19 +8,20 @@ export const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const { openAuthModal } = useAuthModal();
-  const isAuth = true;
   const navigate = useNavigate();
 
+  const { isPending, isAuth } = useUser();
+
   useEffect(() => {
-    if (!isAuth) {
+    if (!isAuth && !isPending) {
       navigate(paths.popular.path, { replace: true });
       openAuthModal("login");
     }
-  }, [isAuth, openAuthModal, navigate]);
+  }, [isAuth, openAuthModal, navigate, isPending]);
 
-  if (!isAuth) {
-    return null;
+  if (isPending) {
+    return <Spinner />;
   }
 
-  return <>{children}</>;
+  if (isAuth) return <>{children}</>;
 };
