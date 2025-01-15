@@ -9,7 +9,6 @@ const getCurrentUser = async () => {
   }
 
   const { data } = await supabase.auth.getUser();
-  console.log(data);
 
   return data?.user;
 };

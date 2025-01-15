@@ -1,4 +1,4 @@
-import { useAuthModal, useEmailAuth } from "@/features/auth";
+import { useAuthModal, useEmailAuth, useUser } from "@/features/auth";
 import { ArrowLeftIcon, XMarkIcon } from "@heroicons/react/20/solid";
 import React, { useEffect, useState } from "react";
 import Modal from "react-modal";
@@ -17,14 +17,15 @@ export const AuthModal: React.FC = () => {
   const { currentModal, closeAuthModal } = useAuthModal();
   const { emailAuth, handleBack } = useEmailAuth();
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const { isAuth, isPending } = useUser();
 
   const isAuthModal =
     currentModal &&
     (Object.values(authPaths) as string[]).includes(currentModal);
 
   useEffect(() => {
-    setModalIsOpen(!!isAuthModal);
-  }, [isAuthModal]);
+    setModalIsOpen(!!isAuthModal && !isAuth && !isPending);
+  }, [isAuthModal, isAuth, isPending]);
 
   const ModalContent = isAuthModal ? modalComponents[currentModal] : null;
 

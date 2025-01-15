@@ -83,7 +83,6 @@ export const Editor: React.FC = memo(() => {
         },
         async onChange(api) {
           const data = await api.saver.save();
-          console.log(data);
         },
       });
 

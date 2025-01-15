@@ -5,9 +5,6 @@ import { Tabs } from "@/features/tabs";
 import React from "react";
 
 export const SingleCategoryPage: React.FC = () => {
-  /*   useEffect(() => {
-    getPosts().then((posts) => console.log(posts));
-  }, []); */
   return (
     <div className="container flex flex-col gap-8 px-4">
       <Tabs

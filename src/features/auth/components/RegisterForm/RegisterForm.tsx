@@ -5,6 +5,7 @@ import {
   RegisterDto,
   registerSchema,
   useEmailAuth,
+  useSignup,
 } from "@/features/auth";
 import { yupResolver } from "@hookform/resolvers/yup";
 import React from "react";
@@ -13,16 +14,18 @@ import { Link } from "react-router";
 
 export const RegisterForm: React.FC = () => {
   const { emailAuth, handleEmailAuth } = useEmailAuth();
+  const { signup, isPending } = useSignup();
 
   const {
     control,
+    reset,
     handleSubmit,
     formState: { errors, isValid },
   } = useForm({
     defaultValues: {
       username: "",
-      password: "",
       email: "",
+      password: "",
       confirmPassword: "",
     },
     resolver: yupResolver(registerSchema),
@@ -31,7 +34,11 @@ export const RegisterForm: React.FC = () => {
   });
 
   const onSubmit: SubmitHandler<RegisterDto> = (data) => {
-    console.log("Form Data:", data);
+    signup(data, {
+      onSettled: () => {
+        reset();
+      },
+    });
   };
 
   return (
@@ -95,7 +102,7 @@ export const RegisterForm: React.FC = () => {
                 />
               )}
             />
-            <SubmitButton text="Submit" disabled={!isValid} />
+            <SubmitButton text="Submit" disabled={!isValid || isPending} />
           </form>
         ) : (
           <AuthOptions handleEmailAuth={handleEmailAuth} text="Sign up" />

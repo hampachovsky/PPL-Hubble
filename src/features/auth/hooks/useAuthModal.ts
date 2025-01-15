@@ -8,6 +8,8 @@ export const useAuthModal = () => {
   const openAuthModal = useCallback(
     (modalType: keyof typeof authPaths) => {
       const params = new URLSearchParams(searchParams.toString());
+      params.delete("modal");
+      params.delete("authOption");
       params.set("modal", authPaths[modalType]);
       setSearchParams(params);
     },

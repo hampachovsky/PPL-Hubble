@@ -22,10 +22,6 @@ export const LoginForm: React.FC = () => {
     reset,
     formState: { errors, isValid },
   } = useForm<LoginDto>({
-    /*    defaultValues: {
-      email: "user@example.com",
-      password: "userPassword",
-    }, */
     resolver: yupResolver(loginSchema),
     mode: "onBlur",
     reValidateMode: "onSubmit",
@@ -37,8 +33,6 @@ export const LoginForm: React.FC = () => {
         reset();
       },
     });
-
-    console.log("Form Data:", dto);
   };
 
   return (

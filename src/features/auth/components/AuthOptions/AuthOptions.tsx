@@ -1,3 +1,4 @@
+import { useOAuthSignin } from "@/features/auth";
 import React from "react";
 
 interface AuthOptionsProps {
@@ -9,9 +10,13 @@ export const AuthOptions: React.FC<AuthOptionsProps> = ({
   handleEmailAuth,
   text,
 }) => {
+  const { oauthSignin } = useOAuthSignin();
   return (
     <>
-      <button className="w-full rounded-md bg-cyan-600 px-4 py-2">
+      <button
+        onClick={() => oauthSignin()}
+        className="w-full rounded-md bg-cyan-600 px-4 py-2"
+      >
         {text} with Google
       </button>
       <button

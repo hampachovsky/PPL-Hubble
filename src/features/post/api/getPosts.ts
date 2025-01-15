@@ -6,6 +6,5 @@ export async function getPosts() {
     console.error(error);
     throw new Error("post");
   }
-  console.log(data);
   return data;
 }

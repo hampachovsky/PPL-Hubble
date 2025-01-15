@@ -17,7 +17,7 @@ export const Header: React.FC = () => {
       <header
         className={clsx(
           "sticky top-0 z-50 col-span-12 h-16 border-b border-gray-800 bg-gray-800",
-          currentModal && "pointer-events-none bg-gray-900"
+          !isAuth && currentModal && "pointer-events-none"
         )}
       >
         <div className="flex h-full items-center justify-between px-5">
