@@ -1,10 +1,20 @@
+import { PostCard } from "@/features/post";
 import React from "react";
-import { Outlet } from "react-router";
 
-export const UserFeedPage: React.FC = () => {
+interface UserFeedPageProps {
+  filterCriteria: string;
+}
+
+export const UserFeedPage: React.FC<UserFeedPageProps> = ({
+  filterCriteria,
+}) => {
   return (
-    <div className="container flex flex-col items-center gap-8 px-4">
-      <Outlet />
-    </div>
+    <>
+      <h1 className="text-center text-2xl">Posts {filterCriteria}</h1>
+      <PostCard />
+      <PostCard />
+      <PostCard />
+      <PostCard />
+    </>
   );
 };

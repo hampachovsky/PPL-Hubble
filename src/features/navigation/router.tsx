@@ -1,7 +1,6 @@
-import { AppLayout, NotFound } from "@/components";
+import { AppLayout, NotFound, UserFeedLayout } from "@/components";
 import { paths } from "@/config";
 import { ProtectedRoute } from "@/features/navigation";
-import { PostsList } from "@/features/post";
 import { PostEditorPage } from "@/pages/PostEditorPage";
 import { PostPage } from "@/pages/PostPage";
 import { ProfilePage } from "@/pages/ProfilePage";
@@ -16,20 +15,20 @@ export const router = createBrowserRouter([
     children: [
       {
         path: paths.popular.path,
-        element: <UserFeedPage />,
+        element: <UserFeedLayout />,
         children: [
           {
             path: paths.popular.path,
-            element: <PostsList category="popular" />,
+            element: <UserFeedPage category="popular" />,
           },
-          { path: paths.new.path, element: <PostsList category="new" /> },
+          { path: paths.new.path, element: <UserFeedPage category="new" /> },
           {
             path: paths.bookmarked.path,
-            element: <PostsList category="bookmarked" />,
+            element: <UserFeedPage category="bookmarked" />,
           },
           {
             path: paths.subscriptions.path,
-            element: <PostsList category="subscriptions" />,
+            element: <UserFeedPage category="subscriptions" />,
           },
         ],
       },

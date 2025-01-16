@@ -1,3 +1,4 @@
+import { constants } from "@/config";
 import { LoginDto, useAuthModal } from "@/features/auth";
 import supabase from "@/lib/supabase";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
@@ -19,7 +20,7 @@ export const useLogin = () => {
   const { mutate: login, isPending } = useMutation({
     mutationFn: (dto: LoginDto) => loginUser(dto),
     onSuccess: ({ user }) => {
-      queryClient.setQueryData(["user"], user);
+      queryClient.setQueryData([constants.QUERY_KEYS.USER], user);
       closeAuthModal();
     },
     onError: (error) => {

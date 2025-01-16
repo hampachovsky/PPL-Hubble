@@ -1,4 +1,4 @@
-export { AppLayout } from "./layouts";
+export { AppLayout, UserFeedLayout } from "./layouts";
 export {
   Banner,
   ErrorMessage,

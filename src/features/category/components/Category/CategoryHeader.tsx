@@ -2,7 +2,7 @@ import { Banner } from "@/components";
 import { FireIcon } from "@heroicons/react/20/solid";
 import React from "react";
 
-export const Header: React.FC = () => {
+export const CategoryHeader: React.FC = () => {
   return (
     <>
       <Banner imageURL="https://images.pexels.com/photos/1373100/pexels-photo-1373100.jpeg?auto=compress&cs=tinysrgb&w=600" />

@@ -1,12 +1,14 @@
+import * as Icons from "@heroicons/react/20/solid";
 import React from "react";
 import { Link } from "react-router";
 
 interface MenuItemProps {
   text: string;
-  Icon: React.ElementType;
+  iconName: string;
   path: string;
 }
-export const MenuItem: React.FC<MenuItemProps> = ({ text, Icon, path }) => {
+export const MenuItem: React.FC<MenuItemProps> = ({ text, iconName, path }) => {
+  const Icon = Icons[iconName as keyof typeof Icons];
   return (
     <Link to={path}>
       <div

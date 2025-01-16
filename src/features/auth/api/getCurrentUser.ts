@@ -1,3 +1,4 @@
+import { constants } from "@/config";
 import supabase from "@/lib/supabase";
 import { useQuery } from "@tanstack/react-query";
 
@@ -15,7 +16,7 @@ const getCurrentUser = async () => {
 
 export const useUser = () => {
   const { isPending, data: user } = useQuery({
-    queryKey: ["user"],
+    queryKey: [constants.QUERY_KEYS.USER],
     queryFn: getCurrentUser,
   });
 
