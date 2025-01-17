@@ -1,0 +1,1 @@
+export { useCategoryPosts } from "./getCategoryPosts";

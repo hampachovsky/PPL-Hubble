@@ -5,6 +5,7 @@ export {
   FormInput,
   Header,
   LabeledInput,
+  NamedIcon,
   NotFound,
   PostButton,
   Spinner,

@@ -1,6 +1,5 @@
 import { Banner } from "@/components";
 import React from "react";
-import { PostCardFooter, PostCardHeader } from "../PostCard";
 import { PostContent } from "./PostContent";
 
 const mockPost = {
@@ -166,16 +165,14 @@ const mockPost = {
 export const Post: React.FC = () => {
   return (
     <div className="w-3/4 rounded-md border border-gray-700 bg-stone-700 shadow">
-      <div className="p-4">
-        <PostCardHeader marginBottom="none" />
-      </div>
+      <div className="p-4">{/* <PostCardHeader marginBottom="none" /> */}</div>
       <div className="mb-2">
         <Banner imageURL="https://images.pexels.com/photos/259620/pexels-photo-259620.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" />
       </div>
       <div className="p-4">
         <PostContent data={mockPost} />
         <div className="mt-4 border-t border-gray-500">
-          <PostCardFooter />
+          {/* <PostCardFooter /> */}
         </div>
       </div>
     </div>

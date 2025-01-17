@@ -1,21 +1,25 @@
-import { Banner } from "@/components";
-import { FireIcon } from "@heroicons/react/20/solid";
+import { Banner, NamedIcon } from "@/components";
+import { Category } from "@/types/api";
 import React from "react";
 
-export const CategoryHeader: React.FC = () => {
+interface CategoryHeaderProps {
+  category: Category;
+}
+
+export const CategoryHeader: React.FC<CategoryHeaderProps> = ({ category }) => {
   return (
     <>
-      <Banner imageURL="https://images.pexels.com/photos/1373100/pexels-photo-1373100.jpeg?auto=compress&cs=tinysrgb&w=600" />
+      <Banner imageURL={category.image_url} />
       <div className="p-4">
         <div className="flex items-center gap-2">
-          <FireIcon className="h-5 w-5 flex-shrink-0" />
-          <h5 className="text-xl">Category 1</h5>
+          <NamedIcon
+            iconName={category.icon_name}
+            className="h-5 w-5 flex-shrink-0 text-cyan-500"
+          />
+          <h5 className="text-xl">{category.name}</h5>
         </div>
         <div>
-          <p className="text-wrap">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus
-            voluptatibus aliquid temporibus quidem minus non!
-          </p>
+          <p className="text-wrap">{category.description}</p>
         </div>
       </div>
     </>

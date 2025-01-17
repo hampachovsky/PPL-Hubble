@@ -18,6 +18,7 @@ export const useUser = () => {
   const { isPending, data: user } = useQuery({
     queryKey: [constants.QUERY_KEYS.USER],
     queryFn: getCurrentUser,
+    staleTime: 1000 * 60 * 10,
   });
 
   return { isPending, user, isAuth: user?.role === "authenticated" };

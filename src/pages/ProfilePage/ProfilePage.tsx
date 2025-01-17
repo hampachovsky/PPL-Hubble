@@ -1,5 +1,4 @@
 import { constants } from "@/config";
-import { PostCard } from "@/features/post";
 import { Profile, SubscriptionBlock } from "@/features/profile";
 import { Tabs } from "@/features/tabs";
 import React from "react";
@@ -13,10 +12,10 @@ export const ProfilePage: React.FC = () => {
         contents={[
           <div className="flex flex-row space-x-2">
             <div className="w-3/5 flex-auto space-y-8">
+              {/*        <PostCard fullWidth />
               <PostCard fullWidth />
               <PostCard fullWidth />
-              <PostCard fullWidth />
-              <PostCard fullWidth />
+              <PostCard fullWidth /> */}
             </div>
             <div className="hidden w-2/5 flex-none sm:hidden md:block">
               <SubscriptionBlock />

@@ -1,17 +1,25 @@
-import { UserAvatar } from "@/components";
+import { NamedIcon, UserAvatar } from "@/components";
 import { paths } from "@/config";
-import { FireIcon, PlusCircleIcon } from "@heroicons/react/20/solid";
+import { PostCardType } from "@/types/api";
+import { PlusCircleIcon } from "@heroicons/react/20/solid";
 import clsx from "clsx";
+import { formatDistanceToNow } from "date-fns";
 import React from "react";
 import { Link } from "react-router";
 import { Tooltip } from "react-tooltip";
 
 interface PostCardHeaderProps {
   marginBottom?: "none" | "default";
+  category: PostCardType["category"];
+  profile: PostCardType["profile"];
+  createdAt: Date;
 }
 
 export const PostCardHeader: React.FC<PostCardHeaderProps> = ({
   marginBottom = "default",
+  category,
+  profile,
+  createdAt,
 }) => {
   return (
     <div
@@ -22,20 +30,25 @@ export const PostCardHeader: React.FC<PostCardHeaderProps> = ({
     >
       <div className="flex flex-wrap items-center gap-2 sm:gap-4">
         <div className="flex items-center gap-2 text-cyan-400">
-          <FireIcon className="h-5 w-5 flex-shrink-0" />
-          <h5 className="text-sm sm:text-base">Category 1</h5>
+          <NamedIcon
+            iconName={category.icon_name}
+            className="h-5 w-5 flex-shrink-0"
+          />
+          <h5 className="text-sm sm:text-base">{category.name}</h5>
         </div>
         <div className="flex flex-row items-center gap-2">
           <Link
             className="flex items-center space-x-2"
-            to={`${paths.profile.getHref("1")}`}
+            to={`${paths.profile.getHref(profile.user_id)}`}
           >
-            <UserAvatar avatarURL="https://placebear.com/600/600" />
+            <UserAvatar avatarURL={profile.avatar_url || undefined} />
             <span className="decoration-cyan-400 hover:text-cyan-400 hover:underline">
-              User1
+              {profile.username}
             </span>
           </Link>
-          <span className="text-xs text-gray-400 sm:text-sm">1 day ago</span>
+          <span className="text-xs text-gray-400 sm:text-sm">
+            {formatDistanceToNow(createdAt, { addSuffix: true })}
+          </span>
         </div>
       </div>
       <div className="ml-auto flex-shrink-0">

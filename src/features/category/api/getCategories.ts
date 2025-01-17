@@ -7,6 +7,7 @@ export async function getCategories() {
   const { data, error } = await supabase
     .from(constants.QUERY_KEYS.CATEGORIES)
     .select("*")
+    .order("id", { ascending: true })
     .returns<Category[]>();
   if (error) {
     console.error(error);

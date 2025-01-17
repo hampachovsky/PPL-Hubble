@@ -1,0 +1,1 @@
+export { NamedIcon } from "./NamedIcon";

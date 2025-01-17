@@ -32,16 +32,14 @@ export const Sidebar: React.FC = () => {
 
           <div className="mt-14 flex flex-col gap-2">
             {categories !== undefined && !isPending ? (
-              [...categories]
-                .reverse()
-                .map((category) => (
-                  <MenuItem
-                    path={paths.category.getHref(category.name)}
-                    text={category.name}
-                    iconName={category.icon_name}
-                    key={category.id}
-                  />
-                ))
+              categories.map((category) => (
+                <MenuItem
+                  path={paths.category.getHref(category.name)}
+                  text={category.name}
+                  iconName={category.icon_name}
+                  key={category.id}
+                />
+              ))
             ) : (
               <>
                 <MenuItemSkeleton />
