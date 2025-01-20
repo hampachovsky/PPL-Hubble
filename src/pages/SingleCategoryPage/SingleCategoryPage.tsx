@@ -1,7 +1,8 @@
 import { Spinner } from "@/components";
 import { constants } from "@/config";
+import { useUser } from "@/features/auth";
 import { CategoryHeader, RulesBlock, useCategory } from "@/features/category";
-import { PostCard, useCategoryPosts } from "@/features/post";
+import { PostCard, usePostsBy } from "@/features/post";
 import { Tabs } from "@/features/tabs";
 import React from "react";
 import { useParams } from "react-router";
@@ -9,9 +10,13 @@ import { useParams } from "react-router";
 export const SingleCategoryPage: React.FC = () => {
   const { category: categoryName } = useParams();
   const { category, isPending } = useCategory(categoryName!);
-  const { posts, isPending: isPostPending } = useCategoryPosts(
-    category?.id || null
-  );
+  const { user } = useUser();
+  const { posts, isPending: isPostPending } = usePostsBy({
+    input_category_id: category?.id ? +category.id : null,
+    input_user_id: user?.id || null,
+    input_type: "category",
+    profile_user_id: null,
+  });
 
   if (isPending || !category) return <Spinner />;
   return (
@@ -34,7 +39,12 @@ export const SingleCategoryPage: React.FC = () => {
                     </>
                   ) : (
                     posts?.map((post) => (
-                      <PostCard key={post.id} post={post} fullWidth />
+                      <PostCard
+                        userId={user?.id}
+                        key={post.id}
+                        post={post}
+                        fullWidth
+                      />
                     ))
                   )}
                 </>

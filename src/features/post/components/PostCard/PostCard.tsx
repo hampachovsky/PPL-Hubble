@@ -1,4 +1,4 @@
-import { PostCardType } from "@/types/api";
+import { PostDetailed, Profile } from "@/types/api";
 import clsx from "clsx";
 import React from "react";
 import { PostCardContent } from "./PostCardContent";
@@ -7,12 +7,14 @@ import { PostCardHeader } from "./PostCardHeader";
 
 interface PostCardProps {
   fullWidth?: boolean;
-  post: PostCardType;
+  post: PostDetailed;
+  userId: Profile["user_id"] | undefined;
 }
 
 export const PostCard: React.FC<PostCardProps> = ({
   fullWidth = false,
   post,
+  userId,
 }) => {
   return (
     <div
@@ -26,9 +28,19 @@ export const PostCard: React.FC<PostCardProps> = ({
           createdAt={post.created_at}
           category={post.category}
           profile={post.profile}
+          is_subscribed={post.is_subscribed}
+          userId={userId}
         />
         <PostCardContent image_url={post.image_url} title={post.title} />
-        <PostCardFooter />
+        <PostCardFooter
+          isBookmarked={post.is_bookmarked}
+          isLiked={post.is_liked}
+          viewsCount={post.views_count}
+          likesCount={post.likes_count}
+          commentsCount={post.comments_count}
+          userId={userId}
+          authorId={post.author_id}
+        />
       </div>
     </div>
   );

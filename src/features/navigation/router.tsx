@@ -19,16 +19,19 @@ export const router = createBrowserRouter([
         children: [
           {
             path: paths.popular.path,
-            element: <UserFeedPage category="popular" />,
+            element: <UserFeedPage filterCriteria="popular" />,
           },
-          { path: paths.new.path, element: <UserFeedPage category="new" /> },
+          {
+            path: paths.new.path,
+            element: <UserFeedPage filterCriteria="new" />,
+          },
           {
             path: paths.bookmarked.path,
-            element: <UserFeedPage category="bookmarked" />,
+            element: <UserFeedPage filterCriteria="bookmarked" />,
           },
           {
             path: paths.subscriptions.path,
-            element: <UserFeedPage category="subscriptions" />,
+            element: <UserFeedPage filterCriteria="subscriptions" />,
           },
         ],
       },

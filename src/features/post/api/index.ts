@@ -1,1 +1,1 @@
-export { useCategoryPosts } from "./getCategoryPosts";
+export { usePostsBy } from "./getPostsBy";

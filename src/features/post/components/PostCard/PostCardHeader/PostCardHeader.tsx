@@ -1,7 +1,7 @@
 import { NamedIcon, UserAvatar } from "@/components";
 import { paths } from "@/config";
-import { PostCardType } from "@/types/api";
-import { PlusCircleIcon } from "@heroicons/react/20/solid";
+import { PostDetailed, Profile } from "@/types/api";
+import { MinusCircleIcon, PlusCircleIcon } from "@heroicons/react/20/solid";
 import clsx from "clsx";
 import { formatDistanceToNow } from "date-fns";
 import React from "react";
@@ -10,9 +10,11 @@ import { Tooltip } from "react-tooltip";
 
 interface PostCardHeaderProps {
   marginBottom?: "none" | "default";
-  category: PostCardType["category"];
-  profile: PostCardType["profile"];
+  category: PostDetailed["category"];
+  profile: PostDetailed["profile"];
+  is_subscribed: boolean;
   createdAt: Date;
+  userId: Profile["user_id"] | undefined;
 }
 
 export const PostCardHeader: React.FC<PostCardHeaderProps> = ({
@@ -20,6 +22,8 @@ export const PostCardHeader: React.FC<PostCardHeaderProps> = ({
   category,
   profile,
   createdAt,
+  is_subscribed,
+  userId,
 }) => {
   return (
     <div
@@ -51,16 +55,22 @@ export const PostCardHeader: React.FC<PostCardHeaderProps> = ({
           </span>
         </div>
       </div>
-      <div className="ml-auto flex-shrink-0">
-        <button
-          data-tooltip-id="subscribe-status"
-          data-tooltip-content="Subscribe"
-          className="text-cyan-400"
-        >
-          <PlusCircleIcon className="h-6 w-6" />
-        </button>
-        <Tooltip place="right" id="subscribe-status" />
-      </div>
+      {userId !== profile.user_id && (
+        <div className="ml-auto flex-shrink-0">
+          <button
+            data-tooltip-id="subscribe-status"
+            data-tooltip-content={is_subscribed ? "Unsubscribe" : "Subscribe"}
+            className="flex items-center text-cyan-400"
+          >
+            {is_subscribed ? (
+              <MinusCircleIcon className="h-6 w-6 text-red-400" />
+            ) : (
+              <PlusCircleIcon className="h-6 w-6" />
+            )}
+          </button>
+          <Tooltip place="right" id="subscribe-status" />
+        </div>
+      )}
     </div>
   );
 };

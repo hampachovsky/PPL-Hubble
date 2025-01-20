@@ -36,9 +36,15 @@ export type Post = Entity<{
   author_id: Profile["user_id"];
 }>;
 
-export type PostCardType = Omit<Post, "content"> & {
+export type PostDetailed = Omit<Post, "content"> & {
   profile: Omit<Profile, "updated_at" | "background_url" | "status">;
   category: Omit<Category, "image_url" | "description" | "rules">;
+  views_count: number;
+  likes_count: number;
+  comments_count: number;
+  is_bookmarked: boolean;
+  is_subscribed: boolean;
+  is_liked: boolean;
 };
 
 export type Category = Entity<{
@@ -49,3 +55,10 @@ export type Category = Entity<{
   description: string;
   rules: string;
 }>;
+
+export type PostDetailRequest = {
+  input_type: "bookmarks" | "category" | "all" | "profile";
+  input_category_id: number | null;
+  profile_user_id: string | null;
+  input_user_id: string | null;
+};
