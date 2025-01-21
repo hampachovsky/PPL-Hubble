@@ -11,7 +11,7 @@ export async function getCategories() {
     .returns<Category[]>();
   if (error) {
     console.error(error);
-    throw new Error("post");
+    throw new Error(error.message);
   }
   return data;
 }
@@ -20,7 +20,7 @@ export const useCategories = () => {
   const { data: categories, isPending } = useQuery({
     queryKey: [constants.QUERY_KEYS.CATEGORIES],
     queryFn: getCategories,
-    staleTime: 1000 * 60 * 30,
+    staleTime: constants.STALE_TIMES.CATEGORIES_STALE,
   });
 
   return { categories, isPending };

@@ -24,7 +24,7 @@ export async function getPostsBy(postDetail: PostDetailRequest) {
   return data;
 }
 
-const getQueryKey = (postDetail: PostDetailRequest): string => {
+const getQueryKey = (postDetail: PostDetailRequest) => {
   const keyMap = {
     category: postDetail.input_category_id,
     profile: postDetail.profile_user_id,
@@ -34,16 +34,17 @@ const getQueryKey = (postDetail: PostDetailRequest): string => {
 
   const id = keyMap[postDetail.input_type];
 
-  return `${postDetail.input_type}/${id}`;
+  return [postDetail.input_type, id];
 };
 
 export const usePostsBy = (postDetail: PostDetailRequest) => {
   const queryKey = getQueryKey(postDetail);
 
   const { data: posts, isPending } = useQuery({
-    queryKey: [constants.QUERY_KEYS.POSTS, queryKey],
+    queryKey: [constants.QUERY_KEYS.POSTS, ...queryKey],
     queryFn: () => getPostsBy(postDetail),
-    staleTime: 5 * 60 * 1000,
+    staleTime: constants.STALE_TIMES.POSTS_BY_STALE,
+    gcTime: constants.GC_TIMES.POSTS_BY_GC,
     enabled: !!queryKey,
   });
 

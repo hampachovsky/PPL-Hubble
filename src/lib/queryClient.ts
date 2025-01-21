@@ -1,3 +1,4 @@
+import { constants } from "@/config";
 import { DefaultOptions } from "@tanstack/react-query";
 
 export const queryConfig = {
@@ -5,6 +6,6 @@ export const queryConfig = {
     // throwOnError: true,
     // refetchOnWindowFocus: false,
     retry: false,
-    staleTime: 1000 * 60,
+    staleTime: constants.STALE_TIMES.DEFAULT_STALE,
   },
 } satisfies DefaultOptions;

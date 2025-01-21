@@ -1,16 +1,26 @@
 import { PostButton, UserAvatar } from "@/components";
 import { paths } from "@/config";
 import { AuthModal, useAuthModal, useUser } from "@/features/auth";
+import { useProfileAvatar } from "@/features/profile";
 import { BookmarkSquareIcon } from "@heroicons/react/24/outline";
 import { MagnifyingGlassCircleIcon } from "@heroicons/react/24/solid";
 import clsx from "clsx";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Toaster } from "react-hot-toast";
 import { Link, useNavigate } from "react-router";
 
 export const Header: React.FC = () => {
   const { currentModal, openAuthModal } = useAuthModal();
-  const { isAuth, isPending } = useUser();
+  const { isAuth, isPending, user } = useUser();
+  const [avatarURL, setAvatarURL] = useState<string | undefined | null>(
+    undefined
+  );
+  const { avatarData, isPending: isAvatarPending } = useProfileAvatar(user?.id);
+
+  useEffect(() => {
+    setAvatarURL(avatarData?.avatar_url);
+  }, [isAuth, avatarURL, avatarData?.avatar_url]);
+
   const navigate = useNavigate();
   return (
     <>
@@ -41,17 +51,17 @@ export const Header: React.FC = () => {
             </div>
 
             <div className="flex items-center space-x-4">
-              {isPending ? (
+              {isPending || isAvatarPending ? (
                 <HeaderSkeleton />
-              ) : isAuth ? (
+              ) : isAuth && user ? (
                 <div className="flex space-x-2">
                   <div>
                     <PostButton
                       onClick={() => navigate(paths.postEditor.getHref("new"))}
                     />
                   </div>
-                  <Link to={paths.profile.getHref("1")}>
-                    <UserAvatar />
+                  <Link to={paths.profile.getHref(user.id)}>
+                    <UserAvatar avatarURL={avatarURL || undefined} />
                   </Link>
                 </div>
               ) : (

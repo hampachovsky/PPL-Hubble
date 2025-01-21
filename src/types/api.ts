@@ -36,6 +36,15 @@ export type Post = Entity<{
   author_id: Profile["user_id"];
 }>;
 
+export type ProfileDetailed = Profile & {
+  subscriberCount: number;
+  subscriptions: Array<{
+    subscribed_id: string;
+    subscribed_to_id: string;
+    subscribed_to_details: Pick<Profile, "username" | "avatar_url">;
+  }>;
+};
+
 export type PostDetailed = Omit<Post, "content"> & {
   profile: Omit<Profile, "updated_at" | "background_url" | "status">;
   category: Omit<Category, "image_url" | "description" | "rules">;

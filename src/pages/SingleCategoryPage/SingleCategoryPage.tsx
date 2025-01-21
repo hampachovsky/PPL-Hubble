@@ -1,11 +1,11 @@
 import { Spinner } from "@/components";
-import { constants } from "@/config";
+import { constants, paths } from "@/config";
 import { useUser } from "@/features/auth";
 import { CategoryHeader, RulesBlock, useCategory } from "@/features/category";
 import { PostCard, usePostsBy } from "@/features/post";
 import { Tabs } from "@/features/tabs";
 import React from "react";
-import { useParams } from "react-router";
+import { Navigate, useParams } from "react-router";
 
 export const SingleCategoryPage: React.FC = () => {
   const { category: categoryName } = useParams();
@@ -13,12 +13,14 @@ export const SingleCategoryPage: React.FC = () => {
   const { user } = useUser();
   const { posts, isPending: isPostPending } = usePostsBy({
     input_category_id: category?.id ? +category.id : null,
-    input_user_id: user?.id || null,
+    input_user_id: user?.id ?? null,
     input_type: "category",
     profile_user_id: null,
   });
 
-  if (isPending || !category) return <Spinner />;
+  if (isPending) return <Spinner />;
+
+  if (!category) return <Navigate to={paths.notFound.path} />;
   return (
     <div className="container flex flex-col gap-8 px-4">
       <Tabs

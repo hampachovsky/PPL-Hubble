@@ -35,4 +35,8 @@ export const paths = {
     path: "/post/:id",
     getHref: (id: string) => `/post/${id}`,
   },
+  notFound: {
+    path: "/notFound",
+    getHref: () => `/notFound`,
+  },
 } as const;
