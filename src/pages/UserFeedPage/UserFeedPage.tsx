@@ -14,7 +14,12 @@ export const UserFeedPage: React.FC<UserFeedPageProps> = ({
   const { posts, isPending } = usePostsBy({
     input_category_id: null,
     input_user_id: user?.id || null,
-    input_type: filterCriteria === "bookmarked" ? "bookmarks" : "all",
+    input_type:
+      filterCriteria === "subscriptions"
+        ? "subscriptions"
+        : filterCriteria === "bookmarked"
+          ? "bookmarks"
+          : "all",
     profile_user_id: null,
   });
 

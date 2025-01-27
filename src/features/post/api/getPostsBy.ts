@@ -29,6 +29,7 @@ const getQueryKey = (postDetail: PostDetailRequest) => {
     category: postDetail.input_category_id,
     profile: postDetail.profile_user_id,
     bookmarks: postDetail.input_user_id,
+    subscriptions: postDetail.input_user_id,
     all: postDetail.input_user_id,
   } as const;
 
