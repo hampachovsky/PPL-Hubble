@@ -1,7 +1,8 @@
-import { Spinner } from "@/components";
-import { useUser } from "@/features/auth";
-import { PostCard, usePostsBy } from "@/features/post";
-import React from "react";
+import { paths } from "@/config";
+import { useAuthModal, useUser } from "@/features/auth";
+import { usePostsRenderer } from "@/hooks/usePostsRenderer";
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router";
 
 interface UserFeedPageProps {
   filterCriteria: string;
@@ -11,7 +12,10 @@ export const UserFeedPage: React.FC<UserFeedPageProps> = ({
   filterCriteria,
 }) => {
   const { user } = useUser();
-  const { posts, isPending } = usePostsBy({
+  const { openAuthModal } = useAuthModal();
+  const navigate = useNavigate();
+
+  const { renderPosts } = usePostsRenderer({
     input_category_id: null,
     input_user_id: user?.id || null,
     input_type:
@@ -21,25 +25,22 @@ export const UserFeedPage: React.FC<UserFeedPageProps> = ({
           ? "bookmarks"
           : "all",
     profile_user_id: null,
+    fullWidth: false,
   });
 
-  if (isPending || !posts) return <Spinner />;
-
-  console.log(posts);
+  useEffect(() => {
+    if (
+      user === null &&
+      (filterCriteria === "bookmarked" || filterCriteria === "subscriptions")
+    ) {
+      navigate(paths.popular.path);
+      openAuthModal("login");
+    }
+  }, [user, filterCriteria, navigate, openAuthModal]);
   return (
     <>
       <h1 className="text-center text-2xl">Posts {filterCriteria}</h1>
-      {!posts || !posts.length ? (
-        <>
-          <h1 className="mt-12 border-b border-gray-600 pb-2 text-center text-3xl font-semibold text-red-100">
-            No posts found
-          </h1>
-        </>
-      ) : (
-        posts?.map((post) => (
-          <PostCard userId={user?.id} key={post.id} post={post} />
-        ))
-      )}
+      {renderPosts()}
     </>
   );
 };

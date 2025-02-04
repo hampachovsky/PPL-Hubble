@@ -1,5 +1,5 @@
-import { OutputData } from "@editorjs/editorjs";
 import { User } from "@supabase/supabase-js";
+import { DataProp } from "editorjs-blocks-react-renderer";
 
 export type BaseEntity = {
   created_at: Date;
@@ -28,7 +28,7 @@ export type ResourceType = {
 
 export type Post = Entity<{
   id: string;
-  content: OutputData;
+  content: DataProp;
   status: PostStatus;
   title: string;
   image_url: string | null;
@@ -43,6 +43,10 @@ export type ProfileDetailed = Profile & {
     subscribed_to_id: string;
     subscribed_to_details: Pick<Profile, "username" | "avatar_url">;
   }>;
+};
+
+export type PostDetailedWithContent = PostDetailed & {
+  content: Post["content"];
 };
 
 export type PostDetailed = Omit<Post, "content"> & {
@@ -69,5 +73,10 @@ export type PostDetailRequest = {
   input_type: "bookmarks" | "category" | "all" | "profile" | "subscriptions";
   input_category_id: number | null;
   profile_user_id: string | null;
+  input_user_id: string | null;
+};
+
+export type SinglePostDetailRequest = {
+  input_post_id: number | null;
   input_user_id: string | null;
 };

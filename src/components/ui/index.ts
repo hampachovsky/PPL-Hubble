@@ -5,6 +5,7 @@ export { Header } from "./Header";
 export { LabeledInput } from "./LabeledInput";
 export { NamedIcon } from "./NamedIcon";
 export { NotFound } from "./NotFound";
+export { NotFoundData } from "./NotFoundData";
 export { PostButton } from "./PostButton";
 export { Spinner } from "./Spinner";
 export { SubmitButton } from "./SubmitButton";

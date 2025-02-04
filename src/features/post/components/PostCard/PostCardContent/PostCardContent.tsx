@@ -5,16 +5,18 @@ import { Link } from "react-router";
 interface PostCardContentProps {
   title: string;
   image_url: string | null;
+  id: string;
 }
 
 export const PostCardContent: React.FC<PostCardContentProps> = ({
   title,
   image_url,
+  id,
 }) => {
   return (
     <div className="flex flex-col gap-4">
       <h2 className="text-xl font-bold text-white hover:cursor-pointer hover:text-cyan-400 hover:underline">
-        <Link to={paths.post.getHref("1")}>{title}</Link>
+        <Link to={paths.post.getHref(id)}>{title}</Link>
       </h2>
       <div className="relative w-full">
         {image_url && (

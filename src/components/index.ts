@@ -7,6 +7,7 @@ export {
   LabeledInput,
   NamedIcon,
   NotFound,
+  NotFoundData,
   PostButton,
   Spinner,
   SubmitButton,

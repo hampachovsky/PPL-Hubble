@@ -31,7 +31,11 @@ export const PostCard: React.FC<PostCardProps> = ({
           is_subscribed={post.is_subscribed}
           userId={userId}
         />
-        <PostCardContent image_url={post.image_url} title={post.title} />
+        <PostCardContent
+          id={post.id}
+          image_url={post.image_url}
+          title={post.title}
+        />
         <PostCardFooter
           isBookmarked={post.is_bookmarked}
           isLiked={post.is_liked}
