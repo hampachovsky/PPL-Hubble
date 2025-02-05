@@ -5,6 +5,7 @@ export {
   FormInput,
   Header,
   LabeledInput,
+  LikeButton,
   NamedIcon,
   NotFound,
   NotFoundData,

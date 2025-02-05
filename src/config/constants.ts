@@ -22,6 +22,7 @@ export const constants = {
     PROFILE: "profile",
     PROFILE_AVATAR: "profileAvatar",
     SINGLE_POST: "post",
+    COMMENTS: "comments",
   },
   CATEGORY_TABS: ["Posts", "Rules"],
   PROFILE_TABS: ["My Posts", "Subscriptions"],

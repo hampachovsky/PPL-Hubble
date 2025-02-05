@@ -22,12 +22,10 @@ export type PostStatus = {
   post_status: "Draft" | "Moderating" | "Published";
 };
 
-export type ResourceType = {
-  resource_type: "post" | "comment";
-};
+export type ResourceType = "post" | "comment";
 
 export type Post = Entity<{
-  id: string;
+  id: number;
   content: DataProp;
   status: PostStatus;
   title: string;
@@ -35,6 +33,24 @@ export type Post = Entity<{
   category_id: number;
   author_id: Profile["user_id"];
 }>;
+
+export type Comment = Entity<{
+  id: number;
+  text: string;
+  author_id: Profile["user_id"];
+  post_id: Post["id"];
+  parent_id: number | null;
+}>;
+
+export type CommentDetailed = Comment & {
+  is_liked: boolean;
+  likes_count: number;
+  profile: {
+    user_id: Profile["user_id"];
+    username: string;
+    avatar_url: string | null;
+  };
+};
 
 export type ProfileDetailed = Profile & {
   subscriberCount: number;
@@ -58,10 +74,11 @@ export type PostDetailed = Omit<Post, "content"> & {
   is_bookmarked: boolean;
   is_subscribed: boolean;
   is_liked: boolean;
+  is_viewed: boolean;
 };
 
 export type Category = Entity<{
-  id: string;
+  id: number;
   name: string;
   icon_name: string;
   image_url: string;

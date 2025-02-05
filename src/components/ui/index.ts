@@ -3,6 +3,7 @@ export { ErrorMessage } from "./ErrorMessage";
 export { FormInput } from "./FormInput";
 export { Header } from "./Header";
 export { LabeledInput } from "./LabeledInput";
+export { LikeButton } from "./LikeButton";
 export { NamedIcon } from "./NamedIcon";
 export { NotFound } from "./NotFound";
 export { NotFoundData } from "./NotFoundData";

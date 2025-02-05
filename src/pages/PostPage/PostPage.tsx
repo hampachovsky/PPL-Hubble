@@ -1,6 +1,7 @@
 import { Spinner } from "@/components";
 import { paths } from "@/config";
 import { useUser } from "@/features/auth";
+import { CommentsList } from "@/features/comment";
 import { Post, usePostDetailById } from "@/features/post";
 import React from "react";
 import { Navigate, useParams } from "react-router";
@@ -20,6 +21,7 @@ export const PostPage: React.FC = () => {
   return (
     <div className="container flex flex-col items-center gap-8 px-4">
       <Post post={post} userId={user?.id} />
+      <CommentsList userId={user?.id} postId={postId} />
     </div>
   );
 };

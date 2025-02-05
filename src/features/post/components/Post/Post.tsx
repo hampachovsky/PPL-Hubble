@@ -35,6 +35,7 @@ export const Post: React.FC<PostProps> = ({ post, userId }) => {
             commentsCount={post.comments_count}
             userId={userId}
             authorId={post.author_id}
+            showComments={false}
           />
         </div>
       </div>

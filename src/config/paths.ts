@@ -33,7 +33,7 @@ export const paths = {
   },
   post: {
     path: "/post/:id",
-    getHref: (id: string) => `/post/${id}`,
+    getHref: (id: number) => `/post/${id}`,
   },
   notFound: {
     path: "/notFound",

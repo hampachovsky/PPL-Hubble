@@ -47,13 +47,13 @@
 
 /* Table */
 .post-table {
-  @apply mx-auto mt-4 table-auto border-collapse border border-gray-500 text-center;
+  @apply mx-auto mt-4 table-auto border-collapse border border-gray-500 text-center block overflow-x-auto w-full md:w-fit;
 }
 
 .post-table th {
-  @apply border border-gray-500 bg-gray-800 px-4 py-2;
+  @apply border border-gray-500 bg-gray-800 px-4 py-2 whitespace-nowrap;
 }
 
 .post-table td {
-  @apply border border-gray-500 px-4 py-2;
+  @apply border border-gray-500 px-4 py-2 whitespace-nowrap;
 }

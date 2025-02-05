@@ -5,7 +5,7 @@ import { Link } from "react-router";
 interface PostCardContentProps {
   title: string;
   image_url: string | null;
-  id: string;
+  id: number;
 }
 
 export const PostCardContent: React.FC<PostCardContentProps> = ({

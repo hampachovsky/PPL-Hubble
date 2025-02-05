@@ -1,0 +1,1 @@
+export { useCommentsByPost } from "./getCommentsByPost";
