@@ -26,4 +26,5 @@ export const constants = {
   },
   CATEGORY_TABS: ["Posts", "Rules"],
   PROFILE_TABS: ["My Posts", "Subscriptions"],
+  MAX_COMMENT_DEPTH: 3,
 } as const;

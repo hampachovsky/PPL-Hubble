@@ -54,7 +54,7 @@ export const Header: React.FC = () => {
               {isPending || isAvatarPending ? (
                 <HeaderSkeleton />
               ) : isAuth && user ? (
-                <div className="flex space-x-2">
+                <div className="flex items-center space-x-2">
                   <div>
                     <PostButton
                       onClick={() => navigate(paths.postEditor.getHref("new"))}

@@ -1,6 +1,6 @@
 import { NotFoundData, Spinner } from "@/components";
 import { usePostsBy } from "@/features/post";
-import { PostDetailRequest } from "@/types/api";
+import { PostDetailRequest } from "@/types/requestTypes";
 import { PostCard } from "../features/post/components/PostCard/PostCard";
 
 export const usePostsRenderer = ({

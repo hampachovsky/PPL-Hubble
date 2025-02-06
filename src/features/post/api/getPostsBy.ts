@@ -1,6 +1,7 @@
 import { constants } from "@/config";
 import supabase from "@/lib/supabase";
-import { PostDetailed, PostDetailRequest } from "@/types/api";
+import { PostDetailed } from "@/types/api";
+import { PostDetailRequest } from "@/types/requestTypes";
 import { useQuery } from "@tanstack/react-query";
 
 export async function getPostsBy(postDetail: PostDetailRequest) {

@@ -1,6 +1,7 @@
 import { constants } from "@/config";
 import supabase from "@/lib/supabase";
-import { CommentDetailed, SinglePostDetailRequest } from "@/types/api";
+import { CommentDetailed } from "@/types/api";
+import { SinglePostDetailRequest } from "@/types/requestTypes";
 import { useQuery } from "@tanstack/react-query";
 
 export async function getCommentsByPost(postDetail: SinglePostDetailRequest) {
