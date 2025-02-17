@@ -1,2 +1,7 @@
-export { useProfile, useProfileAvatar } from "./api";
+export {
+  useCurrentUserProfile,
+  useProfile,
+  useProfileAvatar,
+  useUpdateProfile,
+} from "./api";
 export { Profile, SubscriptionBlock } from "./components";

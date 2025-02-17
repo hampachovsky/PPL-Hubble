@@ -10,7 +10,7 @@ export const registerSchema = yup
       .required("Please enter a username"),
     password: yup
       .string()
-      .min(5, "Password must be more than 4 characters")
+      .min(6, "Password must be at least 6 characters")
       .max(64, "Password must be less than 65 characters")
       .required("Please enter a password"),
     email: yup

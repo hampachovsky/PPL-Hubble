@@ -15,8 +15,7 @@ export const settingsSchema = yup
       .test("fileType", "Unsupported file type", (value) => {
         return (
           !value ||
-          (value instanceof File &&
-            ["image/jpeg", "image/png"].includes(value.type))
+          (value instanceof File && ["image/jpeg"].includes(value.type))
         );
       }),
     banner: yup
@@ -31,8 +30,7 @@ export const settingsSchema = yup
       .test("fileType", "Unsupported file type", (value) => {
         return (
           !value ||
-          (value instanceof File &&
-            ["image/jpeg", "image/png"].includes(value.type))
+          (value instanceof File && ["image/jpeg"].includes(value.type))
         );
       }),
     username: yup
@@ -72,3 +70,5 @@ export const settingsSchema = yup
       return hasValue;
     }
   );
+
+export type UpdateProfileRequest = yup.InferType<typeof settingsSchema>;

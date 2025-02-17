@@ -1,16 +1,25 @@
-import { LabeledInput, SubmitButton } from "@/components";
+import { LabeledInput, Spinner, SubmitButton } from "@/components";
+import { paths } from "@/config";
 import { useLogout } from "@/features/auth";
+import { useUpdateProfile } from "@/features/profile";
+import { Profile } from "@/types/api";
 import { yupResolver } from "@hookform/resolvers/yup";
 import React from "react";
-import { FormProvider, useForm } from "react-hook-form";
+import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
+import { Navigate } from "react-router";
 import { settingsSchema } from "../schemas";
+import { UpdateProfileRequest } from "../schemas/settingsSchema";
 
-export const Settings: React.FC = () => {
+interface SettingsProps {
+  profile: Profile;
+}
+
+export const Settings: React.FC<SettingsProps> = ({ profile }) => {
   const { logout, isPending } = useLogout();
   const methods = useForm({
     defaultValues: {
-      username: "",
-      status: "",
+      username: profile.username,
+      status: profile.status ?? "",
       password: "",
       confirmPassword: "",
     },
@@ -19,9 +28,23 @@ export const Settings: React.FC = () => {
     reValidateMode: "onSubmit",
   });
 
-  const onSubmit = (data: unknown) => {
-    console.log("Form Data:", data);
+  const { update, isUpdating, isUpdated } = useUpdateProfile(profile.user_id);
+
+  const onSubmit: SubmitHandler<UpdateProfileRequest> = (data) => {
+    update({
+      userId: profile.user_id,
+      oldBackgroundURL: profile.background_url,
+      oldAvatarURL: profile.avatar_url,
+      ...data,
+    });
   };
+
+  if (isUpdating) {
+    return <Spinner />;
+  }
+
+  if (isUpdated)
+    return <Navigate to={paths.profile.getHref(profile.user_id)} />;
 
   return (
     <div className="w-full rounded-md border border-gray-700 bg-stone-700 px-4 py-2 shadow md:w-3/4 lg:w-3/4">
@@ -34,6 +57,7 @@ export const Settings: React.FC = () => {
               type="text"
               name="avatar"
               placeholder="Avatar URL"
+              avatarUrl={profile.avatar_url}
               isAvatar={true}
             />
             <LabeledInput
@@ -41,7 +65,8 @@ export const Settings: React.FC = () => {
               type="text"
               name="banner"
               placeholder="Profile banner URL"
-              imageUrl="https://images.pexels.com/photos/259620/pexels-photo-259620.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+              isBannner
+              imageUrl={profile.background_url}
             />
           </div>
           <div className="flex flex-col space-y-4 border-y border-neutral-600 py-2">
@@ -74,6 +99,7 @@ export const Settings: React.FC = () => {
           <div className="mt-2 flex justify-between">
             <div className="">
               <button
+                type="button"
                 onClick={() => {
                   methods.reset();
                   logout();
@@ -85,6 +111,7 @@ export const Settings: React.FC = () => {
             </div>
             <div className="flex justify-end">
               <button
+                type="reset"
                 onClick={() => methods.reset()}
                 className="mr-2 rounded-md bg-gray-700 px-4 py-2 text-white hover:bg-gray-600"
               >
@@ -94,7 +121,8 @@ export const Settings: React.FC = () => {
                 disabled={
                   !methods.formState.isDirty ||
                   !methods.formState.isValid ||
-                  isPending
+                  isPending ||
+                  isUpdating
                 }
                 text="Save"
                 width="unset"

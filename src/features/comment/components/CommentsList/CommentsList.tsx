@@ -1,4 +1,4 @@
-import { NotFoundData, Spinner } from "@/components";
+import { Spinner } from "@/components";
 import { constants } from "@/config";
 import { Comment, CommentInput, useCommentsByPost } from "@/features/comment";
 import { CommentDetailed, Profile } from "@/types/api";
@@ -28,7 +28,6 @@ export const CommentsList: React.FC<CommentsListProps> = ({
   }, []);
 
   if (isPending) return <Spinner />;
-  if (!comments || comments.length === 0) return <NotFoundData />;
 
   const renderComments = (
     comments: CommentDetailed[],
@@ -66,24 +65,22 @@ export const CommentsList: React.FC<CommentsListProps> = ({
   return (
     postId && (
       <div className="min-h-32 w-3/4 rounded-md border border-gray-700 bg-stone-700 p-4 shadow">
-        {isPending ? (
-          <Spinner />
-        ) : !comments ? (
-          <NotFoundData />
-        ) : (
-          <div>
-            <h1 className="text-xl font-bold">{comments.length} Comments</h1>
-            {userId && (
-              <CommentInput
-                postId={postId}
-                userId={userId}
-                parentId={null}
-                handleClearReplyId={handleClearReplyId}
-              />
-            )}
-            {renderComments(comments, null)}
-          </div>
-        )}
+        <div>
+          <h1 className="text-xl font-bold">
+            {comments?.length ?? 0} Comments
+          </h1>
+          {userId && (
+            <CommentInput
+              postId={postId}
+              userId={userId}
+              parentId={null}
+              handleClearReplyId={handleClearReplyId}
+            />
+          )}
+          {!comments || comments.length === 0
+            ? null
+            : renderComments(comments, null)}
+        </div>
       </div>
     )
   );

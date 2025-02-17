@@ -9,8 +9,10 @@ interface LabeledInputProps {
   type: string;
   placeholder: string;
   isTextarea?: boolean;
+  avatarUrl?: string;
   imageUrl?: string;
   isAvatar?: boolean;
+  isBannner?: boolean;
 }
 
 export const LabeledInput: React.FC<LabeledInputProps> = ({
@@ -18,6 +20,8 @@ export const LabeledInput: React.FC<LabeledInputProps> = ({
   name,
   imageUrl,
   isAvatar,
+  avatarUrl,
+  isBannner = false,
   ...inputProps
 }) => {
   const { control } = useFormContext();
@@ -26,7 +30,7 @@ export const LabeledInput: React.FC<LabeledInputProps> = ({
     <div className="flex items-center justify-between space-x-2">
       <div className="w-2/4">
         {isAvatar ? (
-          <UserAvatar size="lg" />
+          <UserAvatar size="lg" avatarURL={avatarUrl || undefined} />
         ) : imageUrl ? (
           <img src={imageUrl} className="size-20" alt={label} />
         ) : (
@@ -41,7 +45,7 @@ export const LabeledInput: React.FC<LabeledInputProps> = ({
             {fieldState.error && (
               <ErrorMessage message={fieldState.error.message} />
             )}
-            {isAvatar || imageUrl ? (
+            {isAvatar || isBannner ? (
               <>
                 <input
                   style={{ display: "none" }}
