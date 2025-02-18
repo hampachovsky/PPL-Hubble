@@ -18,9 +18,7 @@ export type Profile = Entity<{
   updated_at: Date;
 }>;
 
-export type PostStatus = {
-  post_status: "Draft" | "Moderating" | "Published";
-};
+export type PostStatus = "Draft" | "Moderating" | "Published";
 
 export type ResourceType = "post" | "comment";
 

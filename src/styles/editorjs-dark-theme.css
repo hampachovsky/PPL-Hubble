@@ -110,3 +110,13 @@
 .ce-block__content::selection {
   background-color: black !important;
 }
+
+
+
+.tc-popover, .tc-popover--opened,  .tc-cell--selected {
+  @apply bg-stone-700 border-stone-800 !important;
+}
+
+.tc-popover__item-icon {
+  @apply bg-stone-800 border-stone-600 !important;
+}

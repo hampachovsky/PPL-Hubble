@@ -22,6 +22,7 @@ export const Settings: React.FC<SettingsProps> = ({ profile }) => {
       status: profile.status ?? "",
       password: "",
       confirmPassword: "",
+      avatar: profile.avatar_url,
     },
     resolver: yupResolver(settingsSchema),
     mode: "onBlur",
@@ -65,7 +66,7 @@ export const Settings: React.FC<SettingsProps> = ({ profile }) => {
               type="text"
               name="banner"
               placeholder="Profile banner URL"
-              isBannner
+              isBanner
               imageUrl={profile.background_url}
             />
           </div>

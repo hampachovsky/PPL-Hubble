@@ -30,8 +30,10 @@ export const constants = {
   BUCKETS: {
     AVATARS: "avatars",
     BANNERS: "banners",
+    POST_IMAGES: "post_images",
   },
   CATEGORY_TABS: ["Posts", "Rules"],
   PROFILE_TABS: ["My Posts", "Subscriptions"],
   MAX_COMMENT_DEPTH: 3,
+  MAX_IMAGE_SIZE: 5 * 1024 * 1024,
 } as const;

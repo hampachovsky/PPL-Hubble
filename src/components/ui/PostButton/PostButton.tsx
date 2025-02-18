@@ -2,7 +2,7 @@ import { PencilSquareIcon } from "@heroicons/react/20/solid";
 import React from "react";
 
 interface PostButtonProps {
-  onClick: () => void;
+  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 export const PostButton: React.FC<PostButtonProps> = ({ onClick }) => {

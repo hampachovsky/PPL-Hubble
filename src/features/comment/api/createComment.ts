@@ -5,7 +5,9 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 
 export async function createComment(dto: CreateCommentRequest) {
-  const { error } = await supabase.from("comments").insert(dto);
+  const { error } = await supabase
+    .from(constants.QUERY_KEYS.COMMENTS)
+    .insert(dto);
 
   if (error) {
     console.error(error);

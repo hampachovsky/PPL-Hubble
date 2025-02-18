@@ -1,6 +1,6 @@
 import { ErrorMessage, UserAvatar } from "@/components";
 import { FormInput } from "@/components/ui/FormInput/FormInput";
-import React from "react";
+import React, { useState } from "react";
 import { Controller, useFormContext } from "react-hook-form";
 
 interface LabeledInputProps {
@@ -12,7 +12,7 @@ interface LabeledInputProps {
   avatarUrl?: string;
   imageUrl?: string;
   isAvatar?: boolean;
-  isBannner?: boolean;
+  isBanner?: boolean;
 }
 
 export const LabeledInput: React.FC<LabeledInputProps> = ({
@@ -21,18 +21,28 @@ export const LabeledInput: React.FC<LabeledInputProps> = ({
   imageUrl,
   isAvatar,
   avatarUrl,
-  isBannner = false,
+  isBanner = false,
   ...inputProps
 }) => {
   const { control } = useFormContext();
+  const [image, setImage] = useState<File | null>(null);
 
   return (
     <div className="flex items-center justify-between space-x-2">
       <div className="w-2/4">
         {isAvatar ? (
-          <UserAvatar size="lg" avatarURL={avatarUrl || undefined} />
+          <UserAvatar
+            size="lg"
+            avatarURL={
+              image ? URL.createObjectURL(image) : avatarUrl || undefined
+            }
+          />
         ) : imageUrl ? (
-          <img src={imageUrl} className="size-20" alt={label} />
+          <img
+            src={image ? URL.createObjectURL(image) : imageUrl}
+            className="size-20"
+            alt={label}
+          />
         ) : (
           <h3 className="text-lg">{label}:</h3>
         )}
@@ -45,7 +55,7 @@ export const LabeledInput: React.FC<LabeledInputProps> = ({
             {fieldState.error && (
               <ErrorMessage message={fieldState.error.message} />
             )}
-            {isAvatar || isBannner ? (
+            {isAvatar || isBanner ? (
               <>
                 <input
                   style={{ display: "none" }}
@@ -55,6 +65,7 @@ export const LabeledInput: React.FC<LabeledInputProps> = ({
                     const file = e.target.files?.[0];
                     if (file) {
                       field.onChange(file);
+                      setImage(file);
                     }
                   }}
                   ref={field.ref}

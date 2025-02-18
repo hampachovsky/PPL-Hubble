@@ -1,3 +1,4 @@
+import { constants } from "@/config";
 import * as yup from "yup";
 
 export const settingsSchema = yup
@@ -24,7 +25,8 @@ export const settingsSchema = yup
       .optional()
       .test("fileSize", "File size is too large", (value) => {
         return (
-          !value || (value instanceof File && value.size <= 5 * 1024 * 1024)
+          !value ||
+          (value instanceof File && value.size <= constants.MAX_IMAGE_SIZE)
         );
       })
       .test("fileType", "Unsupported file type", (value) => {

@@ -5,7 +5,10 @@ import { useRef } from "react";
 import toast from "react-hot-toast";
 
 export async function deleteComment(id: number) {
-  const { error } = await supabase.from("comments").delete().eq("id", id);
+  const { error } = await supabase
+    .from(constants.QUERY_KEYS.COMMENTS)
+    .delete()
+    .eq("id", id);
 
   if (error) {
     console.error(error);
