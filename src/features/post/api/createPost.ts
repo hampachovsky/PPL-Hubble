@@ -6,7 +6,6 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 
 export async function createPost(dto: CreatePostRequest) {
-  console.log(dto);
   let filePath;
 
   if (dto.image) {

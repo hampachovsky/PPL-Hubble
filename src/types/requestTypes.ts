@@ -1,5 +1,5 @@
 import { OutputData } from "@editorjs/editorjs";
-import { Comment, Post } from "./api";
+import { Comment, Post, Profile } from "./api";
 
 export type PostDetailRequest = {
   input_type: "bookmarks" | "category" | "all" | "profile" | "subscriptions";
@@ -21,4 +21,9 @@ export type CreatePostRequest = Omit<
 > & {
   content: OutputData | null;
   image: File | null;
+};
+
+export type AddViewRequest = {
+  user_id: Profile["user_id"];
+  post_id: Post["id"];
 };

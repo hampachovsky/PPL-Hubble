@@ -22,7 +22,6 @@ export const Settings: React.FC<SettingsProps> = ({ profile }) => {
       status: profile.status ?? "",
       password: "",
       confirmPassword: "",
-      avatar: profile.avatar_url,
     },
     resolver: yupResolver(settingsSchema),
     mode: "onBlur",
@@ -112,7 +111,7 @@ export const Settings: React.FC<SettingsProps> = ({ profile }) => {
             </div>
             <div className="flex justify-end">
               <button
-                type="reset"
+                type="button"
                 onClick={() => methods.reset()}
                 className="mr-2 rounded-md bg-gray-700 px-4 py-2 text-white hover:bg-gray-600"
               >
