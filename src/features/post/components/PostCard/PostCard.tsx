@@ -43,6 +43,7 @@ export const PostCard: React.FC<PostCardProps> = ({
           likesCount={post.likes_count}
           commentsCount={post.comments_count}
           userId={userId}
+          postId={post.id}
           authorId={post.author_id}
         />
       </div>

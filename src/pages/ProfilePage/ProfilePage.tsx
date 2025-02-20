@@ -39,12 +39,14 @@ export const ProfilePage: React.FC = () => {
               <SubscriptionBlock
                 isAuthUserProfile={isAuthUserProfile}
                 subscriptions={profile.subscriptions}
+                userId={user?.id}
               />
             </div>
           </div>,
           <SubscriptionBlock
             isAuthUserProfile={isAuthUserProfile}
             subscriptions={profile.subscriptions}
+            userId={user?.id}
           />,
         ]}
       />

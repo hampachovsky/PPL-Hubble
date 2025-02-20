@@ -14,7 +14,7 @@ export const Post: React.FC<PostProps> = ({ post, userId }) => {
   const divRef = useRef<HTMLDivElement>(null);
   const isVisible = useIsInViewport(divRef);
   const [hasSentView, setHasSentView] = useState(false);
-  const { view, isViewed, isViewing } = useViewPost();
+  const { view, isViewed } = useViewPost();
 
   useEffect(() => {
     if (isVisible && !hasSentView && userId && !post.is_viewed) {
@@ -52,6 +52,7 @@ export const Post: React.FC<PostProps> = ({ post, userId }) => {
             likesCount={post.likes_count}
             commentsCount={post.comments_count}
             userId={userId}
+            postId={post.id}
             authorId={post.author_id}
             showComments={false}
           />

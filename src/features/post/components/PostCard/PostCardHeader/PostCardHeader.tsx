@@ -1,3 +1,4 @@
+import { useToggleSubscription } from "@/api";
 import { NamedIcon, UserAvatar } from "@/components";
 import { paths } from "@/config";
 import { PostDetailed, Profile } from "@/types/api";
@@ -25,6 +26,19 @@ export const PostCardHeader: React.FC<PostCardHeaderProps> = ({
   is_subscribed,
   userId,
 }) => {
+  const { mutate: toggleSubscription, isSubscriptionPending } =
+    useToggleSubscription();
+
+  const handleSubscribeClick = () => {
+    if (isSubscriptionPending) return;
+    if (userId) {
+      toggleSubscription({
+        isSubscribed: is_subscribed,
+        subscriber_id: userId,
+        subscribed_to_id: profile.user_id,
+      });
+    }
+  };
   return (
     <div
       className={clsx(
@@ -63,9 +77,15 @@ export const PostCardHeader: React.FC<PostCardHeaderProps> = ({
             className="flex items-center text-cyan-400"
           >
             {is_subscribed ? (
-              <MinusCircleIcon className="h-6 w-6 text-red-400" />
+              <MinusCircleIcon
+                onClick={handleSubscribeClick}
+                className="h-6 w-6 text-red-400"
+              />
             ) : (
-              <PlusCircleIcon className="h-6 w-6" />
+              <PlusCircleIcon
+                onClick={handleSubscribeClick}
+                className="h-6 w-6"
+              />
             )}
           </button>
           <Tooltip place="right" id="subscribe-status" />

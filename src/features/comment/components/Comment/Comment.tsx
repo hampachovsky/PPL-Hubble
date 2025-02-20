@@ -69,9 +69,10 @@ export const Comment: React.FC<CommentProps> = ({
       <div className="mt-2">
         <LikeButton
           authorId={comment.author_id}
-          isLiked={comment.is_liked}
+          isLikedProp={comment.is_liked}
           likesCount={comment.likes_count}
           resourceType="comment"
+          resourceId={comment.id}
           userId={userId}
         />
       </div>

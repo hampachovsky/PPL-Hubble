@@ -1,5 +1,5 @@
 import { OutputData } from "@editorjs/editorjs";
-import { Comment, Post, Profile } from "./api";
+import { Comment, Post, Profile, ResourceType } from "./api";
 
 export type PostDetailRequest = {
   input_type: "bookmarks" | "category" | "all" | "profile" | "subscriptions";
@@ -26,4 +26,23 @@ export type CreatePostRequest = Omit<
 export type AddViewRequest = {
   user_id: Profile["user_id"];
   post_id: Post["id"];
+};
+
+export type ToggleLikeRequest = {
+  user_id: Profile["user_id"];
+  resource_id: number;
+  resource_type: ResourceType;
+  isLiked: boolean;
+};
+
+export type ToggleBookmarkedRequest = {
+  user_id: Profile["user_id"];
+  post_id: Post["id"];
+  isBookmarked: boolean;
+};
+
+export type ToggleSubscribedRequest = {
+  subscriber_id: Profile["user_id"];
+  subscribed_to_id: Profile["user_id"];
+  isSubscribed: boolean;
 };

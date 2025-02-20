@@ -4,6 +4,10 @@ export const useIsInViewport = (ref: React.RefObject<HTMLElement>) => {
   const [isInViewport, setIsInViewport] = useState(false);
 
   useEffect(() => {
+    const element = ref.current;
+
+    if (!element) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         setIsInViewport(entry.isIntersecting);
@@ -11,14 +15,10 @@ export const useIsInViewport = (ref: React.RefObject<HTMLElement>) => {
       { threshold: 0.25, rootMargin: "50px" }
     );
 
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
+    observer.observe(element);
 
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
-      }
+      observer.unobserve(element);
     };
   }, [ref]);
 
