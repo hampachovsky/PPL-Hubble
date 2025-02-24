@@ -10,6 +10,7 @@ export {
   NotFound,
   NotFoundData,
   PostButton,
+  SearchInput,
   Spinner,
   SubmitButton,
   UserAvatar,

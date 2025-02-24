@@ -1,9 +1,8 @@
-import { PostButton, UserAvatar } from "@/components";
+import { PostButton, SearchInput, UserAvatar } from "@/components";
 import { paths } from "@/config";
 import { AuthModal, useAuthModal, useUser } from "@/features/auth";
 import { useProfileAvatar } from "@/features/profile";
 import { BookmarkSquareIcon } from "@heroicons/react/24/outline";
-import { MagnifyingGlassCircleIcon } from "@heroicons/react/24/solid";
 import clsx from "clsx";
 import React, { useEffect, useState } from "react";
 import { Toaster } from "react-hot-toast";
@@ -39,16 +38,7 @@ export const Header: React.FC = () => {
             PPL-Hubble
           </div>
           <div className="flex items-center gap-4">
-            <div className="relative mr-2">
-              <input
-                type="text"
-                placeholder="Search..."
-                className="h-1/2 rounded-xl bg-cyan-800 p-2 text-white placeholder-slate-300 outline-none"
-              />
-              <button className="absolute inset-y-0 end-0 flex items-center pe-3">
-                <MagnifyingGlassCircleIcon className="h-6 w-6 text-gray-400 hover:text-cyan-400" />
-              </button>
-            </div>
+            <SearchInput />
 
             <div className="flex items-center space-x-4">
               {isPending || isAvatarPending ? (

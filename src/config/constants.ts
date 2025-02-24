@@ -6,6 +6,7 @@ export const constants = {
     POSTS_BY_GC: MINUTE * 10,
     POST_BY_GC: MINUTE * 5,
     SETTINGS_GC: MINUTE * 3,
+    SEARCH_GC: MINUTE,
   },
   STALE_TIMES: {
     DEFAULT_STALE: MINUTE,
@@ -15,6 +16,7 @@ export const constants = {
     CATEGORIES_STALE: MINUTE * 30,
     CURRENT_USER_STALE: MINUTE * 10,
     SETTINGS_STALE: MINUTE * 50,
+    SEARCH_STALE: 30 * 1000,
   },
   QUERY_KEYS: {
     CATEGORIES: "categories",
@@ -23,6 +25,7 @@ export const constants = {
     PROFILES: "profiles",
     PROFILE: "profile",
     PROFILE_AVATAR: "profileAvatar",
+    POSTS_SEARCH: "postsSearch",
     SINGLE_POST: "post",
     COMMENTS: "comments",
     SETTINGS: "settings",

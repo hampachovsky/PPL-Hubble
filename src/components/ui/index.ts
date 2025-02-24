@@ -8,6 +8,7 @@ export { NamedIcon } from "./NamedIcon";
 export { NotFound } from "./NotFound";
 export { NotFoundData } from "./NotFoundData";
 export { PostButton } from "./PostButton";
+export { SearchInput } from "./SearchInput";
 export { Spinner } from "./Spinner";
 export { SubmitButton } from "./SubmitButton";
 export { UserAvatar } from "./UserAvatar";

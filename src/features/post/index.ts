@@ -2,6 +2,7 @@ export {
   useCreatePost,
   usePostDetailById,
   usePostsBy,
+  usePostsSearch,
   useToggleBookmarked,
   useViewPost,
 } from "./api";
