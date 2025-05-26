@@ -1,50 +1,34 @@
-# React + TypeScript + Vite
+PPL-Hubble
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**PPL-Hubble** is a modern media platform that allows users to create, edit, and share blog posts. Users can interact through comments, likes, and bookmarks, as well as follow each other to stay updated with new content.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+* Create, edit, and publish posts
+* Comment on posts and chat with other users
+* Like and save articles to your personal bookmarks
+* Follow other users and view their content in your feed
+* Authentication and role-based access (powered by Supabase)
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+* **Frontend:** React + TypeScript + React-hook-form(with yup)
+* **Styles**: TailwindCss
+* **State & Data:** React Query
+* **Backend / Database:** [Supabase](https://supabase.io) (custom-designed PostgreSQL database and auth)
+* **Storage & Realtime:** Supabase Realtime & Storage APIs
 
-- Configure the top-level `parserOptions` property like this:
+## Project Structure
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+├── config/ # Configuration files, paths, and constants  
+├── components/ # Layouts and reusable UI components  
+├── hooks/ # General-purpose React hooks  
+├── pages/ # Route components (top-level pages)  
+├── styles/ # Global CSS styles (e.g. editor overrides)  
+├── types/ # TypeScript type definitions  
+├── utils/ # Utility and helper functions  
+├── api/ # General API service logic (e.g. toggle subscription, like)  
+│ # These services are shared and don’t belong to a specific feature  
+├── features/ # Domain-specific feature modules  
+│ ├── [feature-name]/ # Components, hooks, logic for a specific feature  
+│ └── ...
